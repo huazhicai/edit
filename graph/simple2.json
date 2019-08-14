@@ -1,0 +1,41 @@
+{
+    "nodes": [
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "f8af0dbe-14b1-415d-bc91-5eb68bd2bd06", 
+            "id": "4941f719-aed2-11e5-91f6-985aebd4acd1", 
+            "pos": {
+                "y": -29.0, 
+                "x": -424.0
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "b8bdb1c4-48e3-4c7b-b38e-12aef4a29db0", 
+            "id": "4c020987-aed2-11e5-86af-985aebd4acd1", 
+            "pos": {
+                "y": -261.0, 
+                "x": -3.0
+            }
+        }
+    ], 
+    "edges": [
+        {
+            "endItemId": "d8e2b000-5cce-4349-b553-394cc6d03817", 
+            "start": "4941f719-aed2-11e5-91f6-985aebd4acd1", 
+            "startNodeName": "On Script Start", 
+            "startItemName": "Out", 
+            "endNodeName": "Create Monster", 
+            "end": "4c020987-aed2-11e5-86af-985aebd4acd1", 
+            "startItemId": "734b3254-71d5-46aa-8c9c-2ca8a99dfaa8", 
+            "linktype": "Event", 
+            "endItemName": "In"
+        }
+    ], 
+    "scene": {
+        "width": 10000.0, 
+        "height": 10000.0
+    }
+}

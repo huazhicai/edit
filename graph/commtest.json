@@ -1,0 +1,20 @@
+{
+    "nodes": [
+        {
+            "comment": "\u6ce8\u91caOn Script Start", 
+            "args": {}, 
+            "deltaWidth": 0, 
+            "pos": {
+                "y": -27.0, 
+                "x": -217.0
+            }, 
+            "type": "f8af0dbe-14b1-415d-bc91-5eb68bd2bd06", 
+            "id": "fca137a1-b2bb-11e5-baec-985aebd4acd1"
+        }
+    ], 
+    "edges": [], 
+    "scene": {
+        "width": 10000.0, 
+        "height": 10000.0
+    }
+}

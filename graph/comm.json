@@ -1,0 +1,21 @@
+{
+    "nodes": [
+        {
+            "comment": "\u6ce8\u91ca\u6b64\u9879\u76ee", 
+            "args": {}, 
+            "deltaWidth": 0, 
+            "pos": {
+                "y": -44.0, 
+                "x": -165.0
+            }, 
+            "type": "1d5ecbe7-bcd4-40e7-b23c-2edda45d18e0", 
+            "id": "a09ec005-c419-11e5-b057-985aebd4acd1"
+        }
+    ], 
+    "edges": [], 
+    "scene": {
+        "width": 10000.0, 
+        "height": 10000.0
+    }, 
+    "comments": []
+}

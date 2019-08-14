@@ -1,0 +1,158 @@
+{
+	"head": {
+		"default":{
+			"red": 77,
+			"green": 118,
+			"blue": 46,
+			"alpha": 245
+		},
+		"Unit":{
+			"red": 77,
+			"green": 118,
+			"blue": 46,
+			"alpha": 245
+		},
+		"Event":{
+			"red": 38,
+			"green": 60,
+			"blue": 166,
+			"alpha": 245
+		},
+		"Flow Control":{
+			"red": 111,
+			"green": 73,
+			"blue": 67,
+			"alpha": 245
+		},
+		"Mission":{
+			"red": 153,
+			"green": 101,
+			"blue": 92,
+			"alpha": 245
+		},
+		"Effect":{
+			"red": 111,
+			"green": 103,
+			"blue": 60,
+			"alpha": 245
+		},
+		"Debug":{
+			"red": 77,
+			"green": 118,
+			"blue": 46,
+			"alpha": 245
+		},
+		"Camera":{
+			"red": 77,
+			"green": 118,
+			"blue": 46,
+			"alpha": 245
+		},
+		"UI": {
+			"red": 137,
+			"green": 38,
+			"blue": 65,
+			"alpha": 245
+		},
+		"Skill":{
+			"red": 77,
+			"green": 118,
+			"blue": 46,
+			"alpha": 245
+		},
+		"Unit/Mechanism":{
+			"red": 77,
+			"green": 118,
+			"blue": 46,
+			"alpha": 245
+		},
+		"Navigation":{
+			"red": 137,
+			"green": 38,
+			"blue": 65,
+			"alpha": 245
+		},
+		"Animation":{
+			"red": 22,
+			"green": 132,
+			"blue": 93,
+			"alpha": 245
+		},
+		"AI":{
+			"red": 77,
+			"green": 118,
+			"blue": 46,
+			"alpha": 245
+		},
+		"Level":{
+			"red": 85,
+			"green": 39,
+			"blue": 52,
+			"alpha": 245
+		},
+		"Player":{
+			"red": 77,
+			"green": 118,
+			"blue": 46,
+			"alpha": 245
+		}
+	},
+	"body": {
+		"default":{
+			"red": 63,
+			"green": 63,
+			"blue": 63,
+			"alpha": 200
+		}
+	},
+	"data": {
+		"default": {
+			"red": 254,
+			"green": 249,
+			"blue": 0,
+			"alpha": 200
+		},
+		"Int": {
+			"red": 253,
+			"green": 128,
+			"blue": 0,
+			"alpha": 200
+		},
+		"Float": {
+			"red": 0,
+			"green": 63,
+			"blue": 110,
+			"alpha": 200
+		},
+		"String": {
+			"red": 0,
+			"green": 20,
+			"blue": 132,
+			"alpha": 200
+		},
+		"Bool": {
+			"red": 111,
+			"green": 0,
+			"blue": 127,
+			"alpha": 200
+		},
+		"Vec3": {
+			"red": 251,
+			"green": 49,
+			"blue": 0,
+			"alpha": 200
+		},
+		"Unit": {
+			"red": 61,
+			"green": 183,
+			"blue": 0,
+			"alpha": 200
+		},
+		"Event": {
+			"red": 28,
+			"green": 165,
+			"blue": 195,
+			"alpha": 200
+		}
+	}
+}

@@ -1,0 +1,219 @@
+{
+    "nodes": [
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "f8af0dbe-14b1-415d-bc91-5eb68bd2bd06", 
+            "id": "e959667d-aec9-11e5-83bf-985aebd4acd1", 
+            "pos": {
+                "y": -132.0, 
+                "x": -427.0
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "b8bdb1c4-48e3-4c7b-b38e-12aef4a29db0", 
+            "id": "eb185499-aec9-11e5-87e8-985aebd4acd1", 
+            "pos": {
+                "y": -204.0, 
+                "x": -59.0
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "b8bdb1c4-48e3-4c7b-b38e-12aef4a29db0", 
+            "id": "3107b733-aeca-11e5-9ce9-985aebd4acd1", 
+            "pos": {
+                "y": 114.0, 
+                "x": -78.0
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "87f06f9c-e7d9-4bd5-8493-838b1543fe50", 
+            "id": "5f613626-aeca-11e5-9c36-985aebd4acd1", 
+            "pos": {
+                "y": 382.0, 
+                "x": 270.0
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "b8bdb1c4-48e3-4c7b-b38e-12aef4a29db0", 
+            "id": "7c39b759-aeca-11e5-80da-985aebd4acd1", 
+            "pos": {
+                "y": -180.5, 
+                "x": 250.5
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "b8bdb1c4-48e3-4c7b-b38e-12aef4a29db0", 
+            "id": "7c39f4b8-aeca-11e5-a889-985aebd4acd1", 
+            "pos": {
+                "y": 131.5, 
+                "x": 406.5
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "f8af0dbe-14b1-415d-bc91-5eb68bd2bd06", 
+            "id": "7c39fff8-aeca-11e5-be3f-985aebd4acd1", 
+            "pos": {
+                "y": 315.5, 
+                "x": -351.5
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "a65ec609-4da6-4349-8e61-6b08d7a26d6e", 
+            "id": "26ea4ec5-aecb-11e5-915d-985aebd4acd1", 
+            "pos": {
+                "y": -111.0, 
+                "x": 638.0
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "3e0a8326-3056-4a3a-9c4a-52ddb6355d38", 
+            "id": "303b9bba-aecb-11e5-9d97-985aebd4acd1", 
+            "pos": {
+                "y": 258.0, 
+                "x": 908.0
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "77bba10c-70c8-4668-b7a4-5c33b502a463", 
+            "id": "348d945c-aecb-11e5-a946-985aebd4acd1", 
+            "pos": {
+                "y": -222.0, 
+                "x": 901.0
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "482544b9-d425-4e6c-8d53-2fb0eb03a99b", 
+            "id": "5ea04dc0-aecb-11e5-8dfd-985aebd4acd1", 
+            "pos": {
+                "y": 387.0, 
+                "x": 657.0
+            }
+        }
+    ], 
+    "edges": [
+        {
+            "endItemId": "d8e2b000-5cce-4349-b553-394cc6d03817", 
+            "start": "e959667d-aec9-11e5-83bf-985aebd4acd1", 
+            "startNodeName": "On Script Start", 
+            "startItemName": "Out", 
+            "endNodeName": "Create Monster", 
+            "end": "3107b733-aeca-11e5-9ce9-985aebd4acd1", 
+            "startItemId": "734b3254-71d5-46aa-8c9c-2ca8a99dfaa8", 
+            "linktype": "Event", 
+            "endItemName": "In"
+        }, 
+        {
+            "endItemId": "d8e2b000-5cce-4349-b553-394cc6d03817", 
+            "start": "7c39fff8-aeca-11e5-be3f-985aebd4acd1", 
+            "startNodeName": "On Script Start", 
+            "startItemName": "Out", 
+            "endNodeName": "Create Monster", 
+            "end": "7c39b759-aeca-11e5-80da-985aebd4acd1", 
+            "startItemId": "734b3254-71d5-46aa-8c9c-2ca8a99dfaa8", 
+            "linktype": "Event", 
+            "endItemName": "In"
+        }, 
+        {
+            "endItemId": "d8e2b000-5cce-4349-b553-394cc6d03817", 
+            "start": "e959667d-aec9-11e5-83bf-985aebd4acd1", 
+            "startNodeName": "On Script Start", 
+            "startItemName": "Out", 
+            "endNodeName": "Create Monster", 
+            "end": "eb185499-aec9-11e5-87e8-985aebd4acd1", 
+            "startItemId": "734b3254-71d5-46aa-8c9c-2ca8a99dfaa8", 
+            "linktype": "Event", 
+            "endItemName": "In"
+        }, 
+        {
+            "endItemId": "5af280cf-1f56-49fa-859d-2bc26ed2116a", 
+            "start": "3107b733-aeca-11e5-9ce9-985aebd4acd1", 
+            "startNodeName": "Create Monster", 
+            "startItemName": "Spawned", 
+            "endNodeName": "Kill All Monsters by Type", 
+            "end": "5f613626-aeca-11e5-9c36-985aebd4acd1", 
+            "startItemId": "c2d11384-1226-4646-997c-475996c2c4fa", 
+            "linktype": "Event", 
+            "endItemName": "In"
+        }, 
+        {
+            "endItemId": "d8e2b000-5cce-4349-b553-394cc6d03817", 
+            "start": "7c39fff8-aeca-11e5-be3f-985aebd4acd1", 
+            "startNodeName": "On Script Start", 
+            "startItemName": "Out", 
+            "endNodeName": "Create Monster", 
+            "end": "7c39f4b8-aeca-11e5-a889-985aebd4acd1", 
+            "startItemId": "734b3254-71d5-46aa-8c9c-2ca8a99dfaa8", 
+            "linktype": "Event", 
+            "endItemName": "In"
+        }, 
+        {
+            "endItemId": "2e5d6925-bcd0-4907-8d7f-5234e371d32b", 
+            "start": "7c39b759-aeca-11e5-80da-985aebd4acd1", 
+            "startNodeName": "Create Monster", 
+            "startItemName": "Spawned Unit ID", 
+            "endNodeName": "Kill Monster", 
+            "end": "26ea4ec5-aecb-11e5-915d-985aebd4acd1", 
+            "startItemId": "b6f99e08-6180-4ffe-aa6c-97c682bcf5f3", 
+            "linktype": "UnitID", 
+            "endItemName": "Unit ID"
+        }, 
+        {
+            "endItemId": "5ddec0c2-bf4e-4ed1-bea1-1319cf04b996", 
+            "start": "7c39b759-aeca-11e5-80da-985aebd4acd1", 
+            "startNodeName": "Create Monster", 
+            "startItemName": "Unspawned", 
+            "endNodeName": "Kill Monster", 
+            "end": "26ea4ec5-aecb-11e5-915d-985aebd4acd1", 
+            "startItemId": "40ddca40-c597-498d-af5a-d1455fce836d", 
+            "linktype": "Event", 
+            "endItemName": "In"
+        }, 
+        {
+            "endItemId": "e57fb01b-ecef-409f-a7f0-ae8002bc7d6c", 
+            "start": "26ea4ec5-aecb-11e5-915d-985aebd4acd1", 
+            "startNodeName": "Kill Monster", 
+            "startItemName": "Out", 
+            "endNodeName": "On Unit Dead", 
+            "end": "348d945c-aecb-11e5-a946-985aebd4acd1", 
+            "startItemId": "dc230c9a-2be3-4f67-a9ae-4f6c9e30d0f6", 
+            "linktype": "Event", 
+            "endItemName": "In"
+        }, 
+        {
+            "endItemId": "72c0de94-0381-4cf1-9ea4-ca05257c6652", 
+            "start": "7c39b759-aeca-11e5-80da-985aebd4acd1", 
+            "startNodeName": "Create Monster", 
+            "startItemName": "Spawned Unit ID", 
+            "endNodeName": "On Unit Dead", 
+            "end": "348d945c-aecb-11e5-a946-985aebd4acd1", 
+            "startItemId": "b6f99e08-6180-4ffe-aa6c-97c682bcf5f3", 
+            "linktype": "UnitID", 
+            "endItemName": "Unit ID"
+        }
+    ], 
+    "scene": {
+        "width": 10000.0, 
+        "height": 10000.0
+    }
+}

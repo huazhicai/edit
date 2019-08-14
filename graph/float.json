@@ -1,0 +1,42 @@
+{
+    "nodes": [
+        {
+            "deltaWidth": 0, 
+            "args": {
+                "bc4eac89-2c39-43b1-ac86-02a2795a2d8f": "1.0"
+            }, 
+            "type": "86077a10-bab7-40a8-a42d-8d3390a58c0c", 
+            "id": "0e9b2ddc-b453-11e5-99ff-985aebd4acd1", 
+            "pos": {
+                "y": 10.0, 
+                "x": -277.0
+            }
+        }, 
+        {
+            "deltaWidth": 20, 
+            "args": {}, 
+            "type": "02b886bc-365f-4913-bae0-3dbf270633f3", 
+            "id": "ec99184c-b819-11e5-85a1-985aebd4acd1", 
+            "pos": {
+                "y": -194.0, 
+                "x": -378.0
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "7c2ac230-a0dd-41a7-a3f3-c501cfce7e59", 
+            "id": "ed7e1ac0-b819-11e5-99b4-985aebd4acd1", 
+            "pos": {
+                "y": -195.0, 
+                "x": -86.0
+            }
+        }
+    ], 
+    "edges": [], 
+    "scene": {
+        "width": 10000.0, 
+        "height": 10000.0
+    }, 
+    "comments": []
+}

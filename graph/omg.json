@@ -1,0 +1,24 @@
+{
+    "nodes": [
+        {
+            "args": {
+                "d2832d2b-9f12-11e5-960d-985aebd4acd1": "Vec3(0.00,0.00,0.00)", 
+                "d2832be8-9f12-11e5-975a-985aebd4acd1": 0, 
+                "d2832e42-9f12-11e5-b74e-985aebd4acd1": false, 
+                "d2832c63-9f12-11e5-a831-985aebd4acd1": 0, 
+                "d2832cc7-9f12-11e5-be16-985aebd4acd1": ""
+            }, 
+            "type": "d2832b05-9f12-11e5-a6a9-985aebd4acd1", 
+            "id": "088e6eb8-aa24-11e5-86d8-985aebd4acd1", 
+            "pos": {
+                "y": -113.0, 
+                "x": -167.0
+            }
+        }
+    ], 
+    "edges": [], 
+    "scene": {
+        "width": 5000.0, 
+        "height": 5000.0
+    }
+}

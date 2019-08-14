@@ -1,0 +1,63 @@
+{
+    "nodes": [
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "f8af0dbe-14b1-415d-bc91-5eb68bd2bd06", 
+            "id": "21bf0b57-b9db-11e5-91a8-985aebd4acd1", 
+            "pos": {
+                "y": -71.0, 
+                "x": -380.0
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "59e9fcdb-1c18-45d9-896d-b85267809adc", 
+            "id": "244e198c-b9db-11e5-a699-985aebd4acd1", 
+            "pos": {
+                "y": -143.0, 
+                "x": -6.0
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "3dc4ecdb-0f17-4a01-9208-fa2caee0a217", 
+            "id": "291b3954-b9db-11e5-9727-985aebd4acd1", 
+            "pos": {
+                "y": -259.0, 
+                "x": -296.0
+            }
+        }
+    ], 
+    "edges": [
+        {
+            "endItemId": "982767d5-cb9f-4274-ab24-287961fc054a", 
+            "start": "21bf0b57-b9db-11e5-91a8-985aebd4acd1", 
+            "startNodeName": "On Script Start", 
+            "startItemName": "Out", 
+            "endNodeName": "Trigger Level Event", 
+            "end": "244e198c-b9db-11e5-a699-985aebd4acd1", 
+            "startItemId": "734b3254-71d5-46aa-8c9c-2ca8a99dfaa8", 
+            "linktype": "Event", 
+            "endItemName": "In"
+        }, 
+        {
+            "endItemId": "a11da8ce-2861-4919-846b-88dd5eae028e", 
+            "start": "291b3954-b9db-11e5-9727-985aebd4acd1", 
+            "startNodeName": "String Data", 
+            "startItemName": "Value", 
+            "endNodeName": "Trigger Level Event", 
+            "end": "244e198c-b9db-11e5-a699-985aebd4acd1", 
+            "startItemId": "4ce97f2a-3dc4-4c78-80c1-f2545ba4c580", 
+            "linktype": "String", 
+            "endItemName": "Event Name"
+        }
+    ], 
+    "scene": {
+        "width": 10000.0, 
+        "height": 10000.0
+    }, 
+    "comments": []
+}

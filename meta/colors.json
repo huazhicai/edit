@@ -1,0 +1,218 @@
+{
+	"head": {
+		"default":{
+			"red": 77,
+			"green": 118,
+			"blue": 46,
+			"alpha": 245
+		},
+		"Variable": {
+			"red": 138,
+			"green": 127,
+			"blue": 70,
+			"alpha": 170
+		},
+        "Audio": {
+			"red": 63,
+			"green": 113,
+			"blue": 116,
+			"alpha": 170
+        },
+        "Math": {
+			"red": 146,
+			"green": 57,
+			"blue": 48,
+			"alpha": 170
+        },
+        "UI": {
+			"red": 63,
+			"green": 142,
+			"blue": 166,
+			"alpha": 170
+        },
+		"Unit":{
+			"red": 99,
+			"green": 146,
+			"blue": 48,
+			"alpha": 170
+		},
+		"Event":{
+			"red": 104,
+			"green": 50,
+			"blue": 65,
+			"alpha": 170
+		},
+		"Scene":{
+			"red": 181,
+			"green": 230,
+			"blue": 29,
+			"alpha": 200
+		},
+		"Helper":{
+			"red": 61,
+			"green": 61,
+			"blue": 157,
+			"alpha": 170
+		},
+		"Flow Control":{
+			"red": 176,
+			"green": 61,
+			"blue": 100,
+			"alpha": 170
+		},
+		"Mission":{
+			"red": 153,
+			"green": 101,
+			"blue": 92,
+			"alpha": 170
+		},
+		"Effect":{
+			"red": 111,
+			"green": 103,
+			"blue": 60,
+			"alpha": 245
+		},
+		"Debug":{
+			"red": 50,
+			"green": 61,
+			"blue": 104,
+			"alpha": 170
+		},
+		"Camera":{
+			"red": 77,
+			"green": 118,
+			"blue": 46,
+			"alpha": 245
+		},
+		"Skill":{
+			"red": 77,
+			"green": 118,
+			"blue": 46,
+			"alpha": 245
+		},
+		"Unit/Mechanism":{
+			"red": 77,
+			"green": 118,
+			"blue": 46,
+			"alpha": 245
+		},
+		"Navigation":{
+			"red": 137,
+			"green": 38,
+			"blue": 65,
+			"alpha": 245
+		},
+		"Animation":{
+			"red": 51,
+			"green": 142,
+			"blue": 167,
+			"alpha": 170
+		},
+		"AI":{
+			"red": 77,
+			"green": 118,
+			"blue": 46,
+			"alpha": 245
+		},
+		"Level":{
+			"red": 85,
+			"green": 39,
+			"blue": 52,
+			"alpha": 245
+		},
+		"Player":{
+			"red": 77,
+			"green": 118,
+			"blue": 46,
+			"alpha": 245
+		},
+        "Data": {
+			"red": 146,
+			"green": 57,
+			"blue": 48,
+			"alpha": 170
+        }
+	},
+	"body": {
+		"default":{
+			"red": 63,
+			"green": 63,
+			"blue": 63,
+			"alpha": 200
+		},
+		"unfold":{
+			"red": 63,
+			"green": 63,
+			"blue": 63,
+			"alpha": 254
+		}
+	},
+	"data": {
+		"default": {
+			"red": 254,
+			"green": 249,
+			"blue": 0,
+			"alpha": 255
+		},
+		"Int": {
+			"red": 47,
+			"green": 77,
+			"blue": 211,
+			"alpha": 255
+		},
+		"Float": {
+			"red": 47,
+			"green": 77,
+			"blue": 211,
+			"alpha": 255
+		},
+		"String": {
+			"red": 146,
+			"green": 57,
+			"blue": 48,
+			"alpha": 255
+		},
+		"Bool": {
+			"red": 138,
+			"green": 127,
+			"blue": 70,
+			"alpha": 255
+		},
+		"Vec3": {
+			"red": 48,
+			"green": 178,
+			"blue": 122,
+			"alpha": 255
+		},
+		"Unit": {
+			"red": 61,
+			"green": 183,
+			"blue": 0,
+			"alpha": 255
+		},
+		"Event": {
+			"red": 115,
+			"green": 115,
+			"blue": 115,
+			"alpha": 255
+		},
+        "UnitID": {
+			"red": 99,
+			"green": 146,
+			"blue": 48,
+			"alpha": 255
+        },
+        "EntityID": {
+			"red": 63,
+			"green": 113,
+			"blue": 116,
+			"alpha": 255
+        },
+		"Array": {
+			"red": 0,
+			"green": 162,
+			"blue": 232,
+			"alpha": 255
+		}
+	}
+}

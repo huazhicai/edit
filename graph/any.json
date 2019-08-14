@@ -1,0 +1,51 @@
+{
+    "nodes": [
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "fde62620-664d-4ad3-88a6-2fadf3f30b0b", 
+            "id": "b2517814-afa1-11e5-a2c5-985aebd4acd1", 
+            "pos": {
+                "y": 83.0, 
+                "x": -392.0
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "3dc4ecdb-0f17-4a01-9208-fa2caee0a217", 
+            "id": "b4580dee-afa1-11e5-89c8-985aebd4acd1", 
+            "pos": {
+                "y": -191.0, 
+                "x": -233.0
+            }
+        }, 
+        {
+            "deltaWidth": 0, 
+            "args": {}, 
+            "type": "830f22d1-aef1-11e5-a7af-985aebd4acd1", 
+            "id": "b7e932b0-afa1-11e5-8354-985aebd4acd1", 
+            "pos": {
+                "y": -32.0, 
+                "x": 105.0
+            }
+        }
+    ], 
+    "edges": [
+        {
+            "endItemId": "f07949f5-aef1-11e5-b988-985aebd4acd1", 
+            "start": "b2517814-afa1-11e5-a2c5-985aebd4acd1", 
+            "startNodeName": "Int Data", 
+            "startItemName": "Value", 
+            "endNodeName": "MyDebug", 
+            "end": "b7e932b0-afa1-11e5-8354-985aebd4acd1", 
+            "startItemId": "7b1f01c1-1ec7-49e2-9242-92793c799360", 
+            "linktype": "Int", 
+            "endItemName": "any"
+        }
+    ], 
+    "scene": {
+        "width": 10000.0, 
+        "height": 10000.0
+    }
+}

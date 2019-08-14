@@ -1,0 +1,64 @@
+{
+  "nodes": [
+    {
+      "preQueryNodes": null,
+      "returns": [],
+      "args": [],
+      "eventLinks": {
+        "Out": [
+          [
+            1,
+            "trigger_level_event"
+          ]
+        ]
+      }
+    },
+    {
+      "preQueryNodes": [
+        [
+          2,
+          "string_data"
+        ]
+      ],
+      "returns": [],
+      "args": [
+        [
+          "Event Name",
+          0
+        ]
+      ],
+      "eventLinks": {}
+    },
+    {
+      "preQueryNodes": null,
+      "returns": [
+        [
+          "Value",
+          0
+        ]
+      ],
+      "args": [
+        [
+          "Set",
+          1
+        ]
+      ],
+      "eventLinks": {}
+    }
+  ],
+  "taskEventListeners": {},
+  "levelEventListeners": {
+    "on_level_shutdown": [],
+    "on_script_start": [
+      [
+        0,
+        "on_script_start"
+      ]
+    ],
+    "on_player_load_scene_finish": []
+  },
+  "runTimeData": [
+    null,
+    "abc"
+  ]
+}
