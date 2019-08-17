@@ -1,10 +1,15 @@
 # coding:utf-8
 
-from PyQt5.Qt import *
+# from PyQt5.Qt import *
+from PyQt5.QtCore import QPoint
+from PyQt5.QtGui import QFont, QTransform
+from PyQt5.QtWidgets import QGraphicsScene, QUndoStack
 
 from graphics import *
 from controller import Controller, ControllerManager
 from functools import partial
+
+from test.editor import Arrow
 from util import ItemType, ItemContent, editable_types
 from undo import CommandAdd, CommandDelete, CommandLink, CommandUnLink
 from clipboard import GraphisClipboard

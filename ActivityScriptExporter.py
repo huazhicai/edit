@@ -62,7 +62,6 @@ class Node(object):
         if self.name == nodeName or self.nodeType == nodeType:
             assert self.name == nodeName
             assert self.nodeType == nodeType
-
             return True
 
         return False
@@ -1010,7 +1009,6 @@ def do_work(defData, editorData, byEditor, filename, resPath, is_city=None):
 
             questionEventListeners.append((node.idx, node.nodeDef['function']))
 
-
         elif node.name == 'Trigger Level Event' or node.nodeType == '59e9fcdb-1c18-45d9-896d-b85267809adc':
             assert node.name == 'Trigger Level Event'
             assert node.nodeType == '59e9fcdb-1c18-45d9-896d-b85267809adc'
@@ -1131,11 +1129,11 @@ def do_work(defData, editorData, byEditor, filename, resPath, is_city=None):
     return ret, staticMechanisms
 
 
-def single_file_export(defData, editorData, byEditor, filename, resPath):
+def single_file_export(defData, editorData, byEditor, filename):
     validate_def_data(defData)
     validate_editor_data(editorData)
 
-    result, singleStaticMechanisms = do_work(defData, editorData, byEditor, filename, resPath)
+    result, singleStaticMechanisms = do_work(defData, editorData, byEditor, filename)
     result["staticMechanisms"] = singleStaticMechanisms
     return result
 
@@ -1289,19 +1287,18 @@ if __name__ == '__main__':
     elif len(sys.argv) == 5:
         multi_file_export_mode()
     else:
-        # nodeDefFilepath = 'F:/H43/design/tools/main/meta/nodes.json'
-        # editorFilepath = 'F:/H43/design/tools/csv2py/levelscripts/level_110.json'
+        nodeDefFilepath = '/Users/mac/PycharmProjects/crawler/edit/meta/nodes.json'
+        editorFilepath = '/Users/mac/PycharmProjects/crawler/edit/graph/temp.json'
         # resPath = 'F:/H43/trunk/Client_Resources/res'
-        # defData = json.loads(open(nodeDefFilepath, 'r').read())
-        # editorData = json.loads(open(editorFilepath, 'r').read())
-        #
+        defData = json.loads(open(nodeDefFilepath, 'r').read())
+        editorData = json.loads(open(editorFilepath, 'r').read())
+
         # scriptType = guess_script_type(editorFilepath, editorData)
-        #
-        # result = single_file_export(defData, editorData, scriptType, False, os.path.basename(nodeDefFilepath).split('.')[0],
-        #                             resPath)
-        #
-        # print 'data = ',
-        # print repr(result)
+
+        result = single_file_export(defData, editorData, False, os.path.basename(nodeDefFilepath).split('.')[0])
+
+        print('data = ',)
+        print(repr(result))
         raise NotImplementedError("wrong args")
 
     sys.exit(0)

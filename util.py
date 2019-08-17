@@ -5,7 +5,7 @@ import numpy as np
 import json
 from collections import OrderedDict
 
-editable_types = ['Int', 'Float', 'Bool', 'String', 'Vec3', 'Any']
+editable_types = ['Int', 'Float', 'Bool', 'String', 'Vec3', 'Any', 'Dict']
 
 
 # 起始点和终止点之间的半条余弦线插值

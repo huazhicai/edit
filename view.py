@@ -1,14 +1,9 @@
 # coding:utf-8
 
-# try:
-# 	from PySide.QtCore import Qt, QPointF, QPoint
-# 	from PySide.QtGui import QGraphicsView
-# 	from PySide.QtCore import Signal as pyqtSignal
-# except:
-# 	from PyQt5.QtCore import Qt, QPointF, QPoint
-# 	from PyQt5.QtGui import QGraphicsView
-# 	from PyQt5.QtCore import pyqtSignal
-from PyQt5.Qt import *
+# from PyQt5.Qt import *
+from PyQt5.Qt import Qt
+from PyQt5.QtCore import pyqtSignal, QPointF, QPoint
+from PyQt5.QtWidgets import QGraphicsView
 
 
 class DiagramView(QGraphicsView):

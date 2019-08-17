@@ -1,7 +1,13 @@
 # coding:utf-8
 
-from PyQt5.Qt import *
+# from PyQt5.Qt import *
 import sys
+
+from PyQt5 import Qt
+from PyQt5.QtCore import pyqtSignal, QRectF, QTimer
+from PyQt5.QtGui import QColor, QImage, QPainter
+from PyQt5.QtWidgets import QWidget, QHBoxLayout, QFileDialog, QMessageBox, QVBoxLayout, QPushButton
+
 from controller import ControllerManager, Controller
 from scene import DiagramScene, TemplateScene
 from view import DiagramView

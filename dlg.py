@@ -1,20 +1,10 @@
 # coding:utf-8
-# try:
-#     # from PySide.QtCore import *
-#     from PySide.QtGui import QDialog, QGridLayout, QLabel, QLineEdit, \
-#         QPushButton, QMessageBox, QListWidget, QListWidgetItem, QIcon, QButtonGroup, \
-#         QRadioButton, QTextEdit, QCheckBox, QTableWidget, QTableWidgetItem, QAbstractItemView, \
-#         QComboBox, QCompleter, QSortFilterProxyModel, QStandardItemModel, QStandardItem
-#     from PySide.QtCore import Qt
-# except:
-#     # from PyQt5.QtCore import *
-#     from PyQt5.QtGui import QDialog, QGridLayout, QLabel, QLineEdit, \
-#         QPushButton, QMessageBox, QListWidget, QListWidgetItem, QIcon, QButtonGroup, \
-#         QRadioButton, QTextEdit, QCheckBox, QTableWidget, QTableWidgetItem, QAbstractItemView, \
-#         QComboBox, QCompleter, QSortFilterProxyModel, QStandardItemModel, QStandardItem
-#     from PyQt5.QtCore import Qt
+# from PyQt5.Qt import *
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QIcon
+from PyQt5.QtWidgets import QDialog, QLabel, QLineEdit, QPushButton, QTableWidget, QAbstractItemView, QGridLayout, \
+    QCheckBox, QTableWidgetItem, QTextEdit, QMessageBox, QComboBox, QCompleter, QListWidgetItem, QListWidget, \
+    QRadioButton, QButtonGroup
 
-from PyQt5.Qt import *
 import util
 import logger
 

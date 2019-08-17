@@ -5,6 +5,10 @@ import os
 import subprocess
 
 # from PyQt5.Qt import *
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QTabWidget, QMainWindow, QSizePolicy, QWidget, QHBoxLayout, QAction, QFileDialog, \
+    QApplication
+
 from graphics import *
 from scene import DiagramScene
 from view import DiagramView

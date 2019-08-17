@@ -1,13 +1,8 @@
 # coding:utf-8
+# from PyQt5.Qt import *
+from PyQt5.QtCore import QPointF, QPoint
+from PyQt5.QtWidgets import QUndoCommand
 
-
-# try:
-#     from PySide.QtGui import QUndoCommand
-#     from PySide.QtCore import QPointF, QPoint
-# except:
-#     from PyQt5.QtGui import QUndoCommand
-#     from PyQt5.QtCore import QPointF, QPoint
-from PyQt5.Qt import *
 from controller import ControllerManager
 from copy import deepcopy
 import inspect
