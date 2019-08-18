@@ -278,7 +278,7 @@ class DiagramScene(QGraphicsScene):
             self.addItem(self.line)
         elif self.myMode == self.MoveItem:
             mousePos = event.scenePos()
-            item = self.itemAt(mousePos.x(), mousePos.y())
+            item = self.itemAt(mousePos.x(), mousePos.y(), QTransform())
 
         super(DiagramScene, self).mousePressEvent(event)
 
@@ -315,7 +315,7 @@ class DiagramScene(QGraphicsScene):
                 arrow.updatePosition()
         elif self.myMode == self.MoveItem:
             mousePos = event.scenePos()
-            item = self.itemAt(mousePos.x(), mousePos.y())
+            item = self.itemAt(mousePos.x(), mousePos.y(), QTransform())
 
         self.line = None
         super(DiagramScene, self).mouseReleaseEvent(event)

@@ -41,6 +41,7 @@ Classic-style usage::
     ...
 
 """
+
 from rpyc.core import (SocketStream, TunneledSocketStream, PipeStream, Channel,
                        Connection, Service, BaseNetref, AsyncResult, GenericException,
                        AsyncResultTimeout, VoidService, SlaveService)

@@ -139,6 +139,9 @@ def parseValue(contentType, text):
     elif contentType == 'String':
         value = text
         sig = True
+    elif contentType == 'Dict':
+        value = eval(text)
+        sig = True
     elif contentType == 'Bool':
         print('branch bool')
         try:

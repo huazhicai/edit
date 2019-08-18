@@ -3,7 +3,7 @@
 # from PyQt5.Qt import *
 import sys
 
-from PyQt5 import Qt
+from PyQt5.Qt import Qt
 from PyQt5.QtCore import pyqtSignal, QRectF, QTimer
 from PyQt5.QtGui import QColor, QImage, QPainter
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QFileDialog, QMessageBox, QVBoxLayout, QPushButton

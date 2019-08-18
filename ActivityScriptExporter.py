@@ -59,7 +59,7 @@ class Node(object):
         self.nodeDef = None
 
     def is_node(self, nodeName, nodeType):
-        if self.name == nodeName or self.nodeType == nodeType:
+        if self.name == nodeName and self.nodeType == nodeType:
             assert self.name == nodeName
             assert self.nodeType == nodeType
             return True
@@ -136,7 +136,7 @@ def validate_def_data(defData):
                 print('Duplicate UUID !!! : ', uuid)
                 raise
 
-            assert UUID(uuid, version=4)
+            # assert UUID(uuid, version=4)
 
             uuidSet.add(uuid)
 
@@ -161,7 +161,7 @@ def validate_def_data(defData):
                 print('Duplicate UUID !!! : ', uuid)
                 raise
 
-            assert UUID(uuid, version=4)
+            # assert UUID(uuid, version=4)
 
             uuidSet.add(uuid)
 
@@ -173,7 +173,7 @@ def validate_def_data(defData):
             print('Duplicate UUID !!! : ', uuid)
             raise
 
-        assert UUID(uuid, version=4)
+        # assert UUID(uuid, version=4)
 
         uuidSet.add(uuid)
 
@@ -201,7 +201,7 @@ def validate_def_data(defData):
                 continue
 
             try:
-                assert 'function' in arg
+                assert 'action' or 'function' in arg
             except:
                 print('Def Error, event does not have func', nodeDef)
                 raise
@@ -274,7 +274,7 @@ def generate_node_graph(defData, editorData):
             argOrder = order
 
             if argType == 'Event':
-                node.funcs[argUUID] = argDef['function']
+                node.funcs[argUUID] = argDef.get('action', None) or argDef.get('function')
                 node.preLinks[argUUID] = {
                     'name': argName,
                     'links': []
@@ -399,7 +399,7 @@ def generate_node_graph(defData, editorData):
     return nodes
 
 
-def do_work(defData, editorData, byEditor, filename, resPath, is_city=None):
+def do_work(defData, editorData, byEditor, filename, is_city=None):
     # from output.common.period_control import data as periodData
 
     nodeGraph = generate_node_graph(defData, editorData)
@@ -1297,7 +1297,7 @@ if __name__ == '__main__':
 
         result = single_file_export(defData, editorData, False, os.path.basename(nodeDefFilepath).split('.')[0])
 
-        print('data = ',)
+        print('data = ', )
         print(repr(result))
         raise NotImplementedError("wrong args")
 
