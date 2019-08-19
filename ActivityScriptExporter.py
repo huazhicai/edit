@@ -48,7 +48,7 @@ class Node(object):
 
         self.nodeType = None
 
-        self.preQueryNodes = []
+        # self.preQueryNodes = []
         self.args = {}
         self.returns = {}
         self.eventLinks = {}
@@ -238,7 +238,7 @@ def generate_node_graph(defData, editorData):
         node.nodeType = editorNode['type']
         node.nodeID = editorNode['id']
 
-        nodeDef = defData[node.nodeType]
+        nodeDef = defData[node.nodeType]  # {} 一个节点
 
         node.name = nodeDef['name'][0]
         node.nodeDef = nodeDef
@@ -400,8 +400,6 @@ def generate_node_graph(defData, editorData):
 
 
 def do_work(defData, editorData, byEditor, filename, is_city=None):
-    # from output.common.period_control import data as periodData
-
     nodeGraph = generate_node_graph(defData, editorData)
 
     # NOTE: 这里做了一些trick，来把string转换成list，避免运行时转换开销
@@ -684,11 +682,11 @@ def do_work(defData, editorData, byEditor, filename, is_city=None):
                 runTimeData.append(valueRef.value)
 
     for node in nodeGraph.values():
-        if len(node.preQueryNodes) > 0:
-            preQueryNodes = [(preQueryNode.idx, preQueryNode.nodeDef['function']) for preQueryNode in
-                             node.preQueryNodes]
-        else:
-            preQueryNodes = None
+        # if len(node.preQueryNodes) > 0:
+        #     preQueryNodes = [(preQueryNode.idx, preQueryNode.nodeDef['function']) for preQueryNode in
+        #                      node.preQueryNodes]
+        # else:
+        #     preQueryNodes = None
 
         """
         # TODO: 缓存优化
@@ -698,43 +696,42 @@ def do_work(defData, editorData, byEditor, filename, is_city=None):
         """
 
         # TODO: Vector
-        args = [(value['name'], value['valueRef'].idx) for argUUID, value in node.args.items()]
+        args = {value['name']: value['valueRef'].idx for argUUID, value in node.args.items()}
+        returns = {value['name']: value['valueRef'].idx for _, value in node.returns.items()}
+        # returns_linked = False
+        # for retUUID, value in node.returns.items():
+        #     returns.append((value['name'], value['valueRef'].idx))
+        #     # returns_linked |= value['linked']
+        # returns = tuple(returns)
 
-        returns = []
-        returns_linked = False
-        for retUUID, value in node.returns.items():
-            returns.append((value['name'], value['valueRef'].idx))
-            returns_linked |= value['linked']
-        returns = tuple(returns)
-
-        eventLinks = {value['name']: [(link['node'].idx, link['funcID']) for link in value['links']] for
+        eventLinks = {value['name']: {link['node'].idx: 'In' for link in value['links']} for
                       eventUUID, value in node.eventLinks.items()}
 
         prelinks = {}
         for value in node.preLinks.values():
-            if value['links']:
-                prelinks[value['name']] = True
+            # if value['links']:
+            prelinks[value['name']] = [node.funcs[key] for key in node.funcs][0]
 
         if byEditor:
             nodes[node.idx] = {
-                'preQueryNodes': preQueryNodes,
+                # 'preQueryNodes': preQueryNodes,
+                'eventLinks': eventLinks,
                 'args': args,
                 'returns': returns,
-                'eventLinks': eventLinks,
                 'preLinks': prelinks,
                 'nodeUUidIdx': (node.nodeID, node.idx)
             }
         else:
             nodes[node.idx] = {
-                'preQueryNodes': preQueryNodes,
-                'args': args,
-                'returns': returns,
-                'eventLinks': eventLinks,
-                'preLinks': prelinks,
+                # 'preQueryNodes': preQueryNodes,
+                'event_actions': prelinks,
+                'event_links': eventLinks,
+                'inputs': args,
+                'outputs': returns,
             }
 
-        if returns_linked:
-            nodes[node.idx]['returns_linked'] = True
+        # if returns_linked:
+        #     nodes[node.idx]['returns_linked'] = True
 
     """
         针对外部事件的特殊处理
@@ -758,7 +755,7 @@ def do_work(defData, editorData, byEditor, filename, is_city=None):
     activityStartListeners = {}
     levelTimesUseoutEventListeners = {}
     openPublicInstnaceEventListeners = {}
-    staticMechanisms = []
+    # staticMechanisms = []
     questionEventListeners = []
 
     STATIC_MECHANISM_PARAMS = {
@@ -1114,27 +1111,17 @@ def do_work(defData, editorData, byEditor, filename, is_city=None):
     ret = {
         'nodes': nodes,
         'runTimeData': runTimeData,
-        'clientEventListeners': clientEventListeners,
-        'levelEventListeners': levelEventListeners,
-        'taskEventListeners': taskEventListeners,
-        'activityStartListeners': activityStartListeners,
-        'levelTimesUseoutEventListeners': levelTimesUseoutEventListeners,
-        'openPublicInstnaceEventListeners': openPublicInstnaceEventListeners,
-        'questionEventListeners': questionEventListeners
     }
 
-    if trigger_grids_all:
-        ret['trigger_grids_list'] = trigger_grids_all
-
-    return ret, staticMechanisms
+    return ret
 
 
 def single_file_export(defData, editorData, byEditor, filename):
     validate_def_data(defData)
     validate_editor_data(editorData)
 
-    result, singleStaticMechanisms = do_work(defData, editorData, byEditor, filename)
-    result["staticMechanisms"] = singleStaticMechanisms
+    result = do_work(defData, editorData, byEditor, filename)
+    # result["staticMechanisms"] = singleStaticMechanisms
     return result
 
 
@@ -1297,8 +1284,8 @@ if __name__ == '__main__':
 
         result = single_file_export(defData, editorData, False, os.path.basename(nodeDefFilepath).split('.')[0])
 
-        print('data = ', )
+        print('data = ', end=' ')
         print(repr(result))
-        raise NotImplementedError("wrong args")
+        # raise NotImplementedError("wrong args")
 
     sys.exit(0)
