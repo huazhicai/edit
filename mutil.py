@@ -10,7 +10,7 @@ import logging.handlers
 def loadJsonData(filename):
     """
     从文件中加载json数据
-    :param filename: 文件名
+    :param filename: 文件名'meta/prefs.json'
     :return: python对象
     """
     assert os.path.exists(filename), '%s do not exists' % filename

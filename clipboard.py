@@ -3,6 +3,7 @@
 from util import singleton
 from copy import deepcopy
 
+
 @singleton
 class GraphisClipboard(object):
 	def __init__(self):

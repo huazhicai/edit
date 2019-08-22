@@ -38,8 +38,8 @@ class GraphWidget(QWidget):
         self.bindingFile = None
 
         self.scene = DiagramScene(self.controllerKey)
-        self.scene.setSceneRect(QRectF(-self.sceneWidth / 2.0, -self.sceneHeight / 2.0,
-                                       self.sceneWidth, self.sceneHeight))
+        # self.scene.setSceneRect(QRectF(-self.sceneWidth / 2.0, -self.sceneHeight / 2.0,
+        #                                self.sceneWidth, self.sceneHeight))
         self.scene.itemSelected.connect(self.itemSelected)
         self.scene.resetModeSignal.connect(self.modeReseted)
         self.scene.editSignal.connect(self.sceneEdited)

@@ -1,7 +1,7 @@
 # coding:utf-8、
 import math
 from PyQt5.Qt import Qt
-from PyQt5.QtCore import QSizeF, QRectF, QLineF, QPointF, pyqtSignal
+from PyQt5.QtCore import QSizeF, QRectF, QLineF, QPointF, pyqtSignal, QSize
 from PyQt5.QtGui import QPen, QPainter, QPainterPath, QPolygonF, QPixmap, QColor, QLinearGradient
 from PyQt5.QtWidgets import QGraphicsLineItem, QGraphicsItem, QMessageBox, QMenu, QGraphicsWidget, QGraphicsTextItem, \
     QGraphicsRectItem, QStyle
@@ -19,7 +19,6 @@ class LineBase(QGraphicsLineItem):
         self.myColor = Qt.black
         self.setPen(QPen(self.myColor, 1, Qt.SolidLine,
                          Qt.RoundCap, Qt.RoundJoin))
-# Qt.MiterJoin
 
 
 class ArrowLine(LineBase):
@@ -865,7 +864,7 @@ class DiagramItemRow(DiagramItemBase):
                              self.InputWidth))
 
     def paint(self, painter, option, widget=None):
-        lineColor = Qt.black
+        lineColor = Qt.yellow
 
         painter.setRenderHint(QPainter.Antialiasing, True)
 
@@ -1447,7 +1446,7 @@ class VirtualRect(QGraphicsItem):
 
 class SelectionRect(QGraphicsRectItem):
     def __init__(self, rect, parent=None):
-        super(SelectionRect, self).__init__(rect, parent=parent)
+        super(SelectionRect, self).__init__(rect, parent)
 
     def paint(self, painter, option, widget=None):
         painter.setRenderHint(QPainter.Antialiasing, True)
@@ -1462,7 +1461,7 @@ class SelectionRect(QGraphicsRectItem):
 
 class ErrorRect(QGraphicsRectItem):
     def __init__(self, rect, parent=None):
-        super(ErrorRect, self).__init__(rect, parent=parent)
+        super(ErrorRect, self).__init__(rect, parent)
 
     def paint(self, painter, option, widget=None):
         painter.setRenderHint(QPainter.Antialiasing, True)

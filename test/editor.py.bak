@@ -15,7 +15,7 @@ sample_data = [
     {'EventID': 1, 'EventType': 1, 'EventTypeName': 'trigger_events', 'EventArgs': {
         'event_ids': [31, 32, 33, 34, 35, 36, 37, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 55, 60, 63, 64,
                       67, 68, 69, 70, 71, 87, 88, 91, 92, 93, 96, 97, 98, 99, 100, 101],
-        'ps': '总触发器',
+        'ps': u'总触发器',
         'only_once': 1
     }},
     {'EventID': 31, 'EventType': 39, 'EventTypeName': 'create_mechanism', 'EventArgs': {
@@ -225,7 +225,7 @@ class DiagramItem(QGraphicsItem):
 
 
 class DiagramScene(QGraphicsScene):
-    InsertItem, InsertLine, MoveItem = list(range(3))
+    InsertItem, InsertLine, MoveItem = range(3)
 
     itemInserted = pyqtSignal(DiagramItem)
     itemSelected = pyqtSignal(QGraphicsItem)

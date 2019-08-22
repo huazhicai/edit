@@ -1,4 +1,5 @@
 # coding:utf-8
+import os
 
 from PyQt5.QtGui import QFontDatabase, QFont, QFontMetrics
 from util import singleton
@@ -18,7 +19,8 @@ class FontManager(object):
     def loadFontFamilyFromTTF(self):
         if not self.isLoaded:
             # load custom font
-            fontId = QFontDatabase.addApplicationFont('font/SourceCodePro-Medium.ttf')
+            dir = os.path.dirname(os.path.abspath(__file__))
+            fontId = QFontDatabase.addApplicationFont(dir + '/font/SourceCodePro-Medium.ttf')
             if fontId == -1:
                 print('font load failed......')
             loadedFontFamilies = QFontDatabase.applicationFontFamilies(fontId)

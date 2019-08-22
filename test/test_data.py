@@ -1,12 +1,13 @@
-#coding:utf-8
+# coding:utf-8
 
 import init
 import data
-import unitttest
+import unittest
 
-class DataTester(unitttest.TestCase):
-	pass
+
+class DataTester(unittest.TestCase):
+    pass
+
 
 if __name__ == '__main__':
-	unitttest.main()
-
+    unittest.main()

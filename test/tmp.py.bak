@@ -6,4 +6,4 @@ abc              # note
 nice
 """
 
-print(len(s))
+print len(s)

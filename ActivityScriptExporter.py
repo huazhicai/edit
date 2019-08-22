@@ -1233,7 +1233,7 @@ def editor_validate_and_export(defData, editorData, filename, resPath):
     }
 
     try:
-        result['result'] = single_file_export(defData, editorData, True, filename, resPath)
+        result['result'] = single_file_export(defData, editorData, True, filename)
     except NoneValueError as e:
         noneValueErrors.append({
             'id': e.nodeID,

@@ -1,6 +1,6 @@
-#coding:utf-8
+# coding:utf-8
 
-#!/usr/bin/env python
+# !/usr/bin/env python
 
 ############################################################################
 ##
@@ -27,14 +27,15 @@
 
 # This is only needed for Python v2 but is harmless for Python v3.
 import sip
+
 sip.setapi('QVariant', 2)
 
 from math import cos, pi, sin
 
-from PyQt5 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class RenderArea(QtGui.QWidget):
+class RenderArea(QtGui, QtWidgets):
     def __init__(self, path, parent=None):
         super(RenderArea, self).__init__(parent)
 
@@ -80,7 +81,7 @@ class RenderArea(QtGui.QWidget):
         painter.translate(-50.0, -50.0)
 
         painter.setPen(QtGui.QPen(self.penColor, self.penWidth,
-                QtCore.Qt.SolidLine, QtCore.Qt.RoundCap, QtCore.Qt.RoundJoin))
+                                  QtCore.Qt.SolidLine, QtCore.Qt.RoundCap, QtCore.Qt.RoundJoin))
         gradient = QtGui.QLinearGradient(0, 0, 0, 100)
         gradient.setColorAt(0.0, self.fillColor1)
         gradient.setColorAt(1.0, self.fillColor2)
@@ -151,14 +152,14 @@ class Window(QtGui.QWidget):
         starPath.moveTo(90, 50)
         for i in range(1, 5):
             starPath.lineTo(50 + 40 * cos(0.8 * i * pi),
-                    50 + 40 * sin(0.8 * i * pi))
+                            50 + 40 * sin(0.8 * i * pi))
         starPath.closeSubpath()
 
         self.renderAreas = [RenderArea(rectPath), RenderArea(roundRectPath),
-                RenderArea(ellipsePath), RenderArea(piePath),
-                RenderArea(polygonPath), RenderArea(groupPath),
-                RenderArea(textPath), RenderArea(bezierPath),
-                RenderArea(starPath)]
+                            RenderArea(ellipsePath), RenderArea(piePath),
+                            RenderArea(polygonPath), RenderArea(groupPath),
+                            RenderArea(textPath), RenderArea(bezierPath),
+                            RenderArea(starPath)]
         assert len(self.renderAreas) == 9
 
         self.fillRuleComboBox = QtGui.QComboBox()
@@ -171,19 +172,19 @@ class Window(QtGui.QWidget):
         self.fillColor1ComboBox = QtGui.QComboBox()
         self.populateWithColors(self.fillColor1ComboBox)
         self.fillColor1ComboBox.setCurrentIndex(
-                self.fillColor1ComboBox.findText("mediumslateblue"))
+            self.fillColor1ComboBox.findText("mediumslateblue"))
 
         self.fillColor2ComboBox = QtGui.QComboBox()
         self.populateWithColors(self.fillColor2ComboBox)
         self.fillColor2ComboBox.setCurrentIndex(
-                self.fillColor2ComboBox.findText("cornsilk"))
+            self.fillColor2ComboBox.findText("cornsilk"))
 
         fillGradientLabel = QtGui.QLabel("&Fill Gradient:")
         fillGradientLabel.setBuddy(self.fillColor1ComboBox)
 
         fillToLabel = QtGui.QLabel("to")
         fillToLabel.setSizePolicy(QtGui.QSizePolicy.Fixed,
-                QtGui.QSizePolicy.Fixed)
+                                  QtGui.QSizePolicy.Fixed)
 
         self.penWidthSpinBox = QtGui.QSpinBox()
         self.penWidthSpinBox.setRange(0, 20)
@@ -194,7 +195,7 @@ class Window(QtGui.QWidget):
         self.penColorComboBox = QtGui.QComboBox()
         self.populateWithColors(self.penColorComboBox)
         self.penColorComboBox.setCurrentIndex(
-                self.penColorComboBox.findText('darkslateblue'))
+            self.penColorComboBox.findText('darkslateblue'))
 
         penColorLabel = QtGui.QLabel("Pen &Color:")
         penColorLabel.setBuddy(self.penColorComboBox)
@@ -272,7 +273,6 @@ class Window(QtGui.QWidget):
 
 
 if __name__ == '__main__':
-
     import sys
 
     app = QtGui.QApplication(sys.argv)

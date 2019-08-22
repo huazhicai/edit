@@ -7,7 +7,7 @@ import subprocess
 # from PyQt5.Qt import *
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QTabWidget, QMainWindow, QSizePolicy, QWidget, QHBoxLayout, QAction, QFileDialog, \
-    QApplication
+    QApplication, QGraphicsScene, QToolButton, QButtonGroup, QComboBox
 
 from graphics import *
 from scene import DiagramScene
@@ -34,12 +34,12 @@ class TabWidget(QTabWidget):
 
 
 class MainWindow(QMainWindow):
-    def __init__(self):
-        super(MainWindow, self).__init__()
+    def __init__(self, parent=None):
+        super(MainWindow, self).__init__(parent)
         # 设置控件
         self.setWindowTitle('Node Editor')
-        self.setMinimumSize(1200, 900)
-        self.setAcceptDrops(True)
+        # self.setMinimumSize(600, 400)  # 设置窗口开启最小尺寸
+        self.setAcceptDrops(True)  # 设置接受拖放事件
 
         self.prefs = data.load_prefs()
         self.mousePosition = (0, 0)
@@ -49,7 +49,7 @@ class MainWindow(QMainWindow):
 
         self.createActions()
         self.createMenus()
-        self.createToolBar()
+        # self.createToolBar()
 
         self.sceneWidth = 10000
         self.sceneHeight = 10000
@@ -57,6 +57,7 @@ class MainWindow(QMainWindow):
         self.createTabWidget()
 
         layout = QHBoxLayout()
+        layout.setContentsMargins(0, 0, 0, 0)
         layout.addWidget(self.tabWidget)
 
         self.main_widget = QWidget()
@@ -102,7 +103,7 @@ class MainWindow(QMainWindow):
             QIcon('./images/delete.png'),
             '&Delete item',
             self,
-            shortcut='Delete',
+            shortcut='Del',
             statusTip='Delete a item',
             triggered=self.deleteItem)
 
@@ -804,11 +805,11 @@ class MainWindow(QMainWindow):
         self.editMenu.addAction(self.findAction)
         self.editMenu.addAction(self.replaceAction)
 
-        self.gameMenu = self.menuBar().addMenu('&Game')
-        self.gameMenu.addAction(self.startGameClientAction)
-        self.gameMenu.addAction(self.exportTableAction)
-        self.gameMenu.addAction(self.runAction)
-        self.gameMenu.addAction(self.runActionTable)
+        # self.gameMenu = self.menuBar().addMenu('&Game')
+        # self.gameMenu.addAction(self.startGameClientAction)
+        # self.gameMenu.addAction(self.exportTableAction)
+        # self.gameMenu.addAction(self.runAction)
+        # self.gameMenu.addAction(self.runActionTable)
 
         self.itemMenu = self.menuBar().addMenu('&Item')
         self.itemMenu.addAction(self.widerAction)
@@ -827,48 +828,48 @@ class MainWindow(QMainWindow):
         self.aboutMenu = self.menuBar().addMenu('&Help')
         self.aboutMenu.addAction(self.aboutAction)
 
-    def createToolBar(self):
-        # self.editToolBar = self.addToolBar("Edit")
-        # self.editToolBar.addAction(self.deleteAction)
-
-        # addButton = QToolButton()
-        # addButton.setCheckable(True)
-        # addButton.setIcon(QIcon('./images/add.png'))
-
-        # self.pointerButton = QToolButton()
-        # self.pointerButton.setCheckable(True)
-        # self.pointerButton.setChecked(True)
-        # self.pointerButton.setIcon(QIcon('./images/pointer.png'))
-        # linePointerButton = QToolButton()
-        # linePointerButton.setCheckable(True)
-        # linePointerButton.setIcon(QIcon('./images/linepointer.png'))
-
-        # self.pointerTypeGroup = QButtonGroup()
-        # self.pointerTypeGroup.addButton(addButton, DiagramScene.InsertItem)
-        # self.pointerTypeGroup.addButton(self.pointerButton, DiagramScene.MoveItem)
-        # self.pointerTypeGroup.addButton(linePointerButton, DiagramScene.InsertLine)
-        # self.pointerTypeGroup.buttonClicked[int].connect(self.pointerGroupClicked)
-
-        # self.sceneScaleCombo = QComboBox()
-        # self.sceneScaleCombo.addItems(['50%','75%','100%','125%','150%'])
-        # self.sceneScaleCombo.setCurrentIndex(2)
-        # self.sceneScaleCombo.currentIndexChanged[str].connect(self.sceneScaleChanged)
-
-        # self.itemTypeCombo = QComboBox()
-        # self.itemTypeCombo.addItems(ControllerManager().optionalItemNames())
-        # self.itemTypeCombo.setCurrentIndex(0)
-        # self.itemTypeCombo.currentIndexChanged[str].connect(self.itemTypeChanged)
-
-        # self.pointerToolbar = self.addToolBar('Pointer type')
-        # self.pointerToolbar.addWidget(self.pointerButton)
-        # self.pointerToolbar.addWidget(linePointerButton)
-        # self.pointerToolbar.addWidget(self.sceneScaleCombo)
-        # self.pointerToolbar.addWidget(addButton)
-        # self.pointerToolbar.addWidget(self.itemTypeCombo)
-
-        # self.gameToolbar = self.addToolBar('Game')
-        # self.gameToolbar.addAction(self.exportTableAction)
-        # self.gameToolbar.addAction(self.runAction)
+    # def createToolBar(self):
+    #     self.editToolBar = self.addToolBar("Edit")
+    #     self.editToolBar.addAction(self.deleteAction)
+    #
+    #     addButton = QToolButton()
+    #     addButton.setCheckable(True)
+    #     addButton.setIcon(QIcon('./images/add.png'))
+    #
+    #     self.pointerButton = QToolButton()
+    #     self.pointerButton.setCheckable(True)
+    #     self.pointerButton.setChecked(True)
+    #     self.pointerButton.setIcon(QIcon('./images/pointer.png'))
+    #     linePointerButton = QToolButton()
+    #     linePointerButton.setCheckable(True)
+    #     linePointerButton.setIcon(QIcon('./images/linepointer.png'))
+    #
+    #     self.pointerTypeGroup = QButtonGroup()
+    #     self.pointerTypeGroup.addButton(addButton, DiagramScene.InsertItem)
+    #     self.pointerTypeGroup.addButton(self.pointerButton, DiagramScene.MoveItem)
+    #     self.pointerTypeGroup.addButton(linePointerButton, DiagramScene.InsertLine)
+    #     # self.pointerTypeGroup.buttonClicked[int].connect(self.pointerGroupClicked)
+    #
+    #     self.sceneScaleCombo = QComboBox()
+    #     self.sceneScaleCombo.addItems(['50%','75%','100%','125%','150%'])
+    #     self.sceneScaleCombo.setCurrentIndex(2)
+    #     self.sceneScaleCombo.currentIndexChanged[str].connect(self.sceneScaleChanged)
+    #
+    #     self.itemTypeCombo = QComboBox()
+    #     self.itemTypeCombo.addItems(ControllerManager().optionalItemNames())
+    #     self.itemTypeCombo.setCurrentIndex(0)
+    #     self.itemTypeCombo.currentIndexChanged[str].connect(self.itemTypeChanged)
+    #
+    #     self.pointerToolbar = self.addToolBar('Pointer type')
+    #     self.pointerToolbar.addWidget(self.pointerButton)
+    #     self.pointerToolbar.addWidget(linePointerButton)
+    #     self.pointerToolbar.addWidget(self.sceneScaleCombo)
+    #     self.pointerToolbar.addWidget(addButton)
+    #     self.pointerToolbar.addWidget(self.itemTypeCombo)
+    #
+    #     self.gameToolbar = self.addToolBar('Game')
+    #     self.gameToolbar.addAction(self.exportTableAction)
+    #     self.gameToolbar.addAction(self.runAction)
         pass
 
     def deleteItem(self):
@@ -1024,14 +1025,16 @@ class MainWindow(QMainWindow):
 
 
 def main():
-    # 1.创建一个应用程序对象
+    # 1.创建一个应用程序对象，传入参数列表
     app = QApplication(sys.argv)
     # 2. 控件的操作
     # 2.1 创建控件
     mainWindow = MainWindow()
     # 2.1 设置控件
-    mainWindow.setGeometry(100, 100, 1200, 800)
-    screenRect = app.desktop().screenGeometry()
+    mainWindow.setGeometry(100, 100, 1200, 800)  # 不小于最小尺寸setMinimize
+    screenRect = app.desktop().screenGeometry()  # 屏幕几何位置、尺寸(0, 0, 1440, 900)
+    # screenRect.center() 屏幕中心坐标（719，449）
+    # 窗口中心点移动到屏幕中心点
     mainWindow.move(screenRect.center() - mainWindow.rect().center())
     # 2.3 展示控件
     mainWindow.show()
