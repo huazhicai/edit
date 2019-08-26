@@ -26,16 +26,17 @@
 ############################################################################
 
 # This is only needed for Python v2 but is harmless for Python v3.
-import sip
+# import sip
+from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
-sip.setapi('QVariant', 2)
+# sip.setapi('QVariant', 2)
 
 from math import cos, pi, sin
 
-from PyQt5 import QtCore, QtGui, QtWidgets
 
-
-class RenderArea(QtGui, QtWidgets):
+class RenderArea(QWidget):
     def __init__(self, path, parent=None):
         super(RenderArea, self).__init__(parent)
 
@@ -43,13 +44,13 @@ class RenderArea(QtGui, QtWidgets):
 
         self.penWidth = 1
         self.rotationAngle = 0
-        self.setBackgroundRole(QtGui.QPalette.Base)
+        self.setBackgroundRole(QPalette.Base)
 
     def minimumSizeHint(self):
-        return QtCore.QSize(50, 50)
+        return QSize(50, 50)
 
     def sizeHint(self):
-        return QtCore.QSize(100, 100)
+        return QSize(100, 100)
 
     def setFillRule(self, rule):
         self.path.setFillRule(rule)
@@ -73,36 +74,38 @@ class RenderArea(QtGui, QtWidgets):
         self.update()
 
     def paintEvent(self, event):
-        painter = QtGui.QPainter(self)
-        painter.setRenderHint(QtGui.QPainter.Antialiasing)
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.Antialiasing)
         painter.scale(self.width() / 100.0, self.height() / 100.0)
         painter.translate(50.0, 50.0)
         painter.rotate(-self.rotationAngle)
         painter.translate(-50.0, -50.0)
 
-        painter.setPen(QtGui.QPen(self.penColor, self.penWidth,
-                                  QtCore.Qt.SolidLine, QtCore.Qt.RoundCap, QtCore.Qt.RoundJoin))
-        gradient = QtGui.QLinearGradient(0, 0, 0, 100)
+        painter.setPen(QPen(self.penColor, self.penWidth,
+                            Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+        gradient = QLinearGradient(0, 0, 0, 100)
         gradient.setColorAt(0.0, self.fillColor1)
         gradient.setColorAt(1.0, self.fillColor2)
-        painter.setBrush(QtGui.QBrush(gradient))
+        painter.setBrush(QBrush(gradient))
         painter.drawPath(self.path)
 
 
-class Window(QtGui.QWidget):
-    NumRenderAreas = 9
+class Window(QWidget):
+    NumRenderAreas = 9   # 数字渲染区
 
     def __init__(self):
         super(Window, self).__init__()
 
-        rectPath = QtGui.QPainterPath()
+        # 子空件绘画路径对象， 画矩形
+        rectPath = QPainterPath()
         rectPath.moveTo(20.0, 30.0)
         rectPath.lineTo(80.0, 30.0)
         rectPath.lineTo(80.0, 70.0)
         rectPath.lineTo(20.0, 70.0)
-        rectPath.closeSubpath()
+        rectPath.closeSubpath()  # 关闭当前子路径，开启下一个路径
 
-        roundRectPath = QtGui.QPainterPath()
+        # 画圆角矩形
+        roundRectPath = QPainterPath()
         roundRectPath.moveTo(80.0, 35.0)
         roundRectPath.arcTo(70.0, 30.0, 10.0, 10.0, 0.0, 90.0)
         roundRectPath.lineTo(25.0, 30.0)
@@ -111,26 +114,31 @@ class Window(QtGui.QWidget):
         roundRectPath.arcTo(20.0, 60.0, 10.0, 10.0, 180.0, 90.0)
         roundRectPath.lineTo(75.0, 70.0)
         roundRectPath.arcTo(70.0, 60.0, 10.0, 10.0, 270.0, 90.0)
-        roundRectPath.closeSubpath()
+        roundRectPath.closeSubpath()  # 关闭当前子路径，开启下一个路径
 
-        ellipsePath = QtGui.QPainterPath()
+        # 画椭圆形
+        ellipsePath = QPainterPath()
         ellipsePath.moveTo(80.0, 50.0)
         ellipsePath.arcTo(20.0, 30.0, 60.0, 40.0, 0.0, 360.0)
+        ellipsePath.closeSubpath()
 
-        piePath = QtGui.QPainterPath()
+        # 画
+        piePath = QPainterPath()
         piePath.moveTo(50.0, 50.0)
         piePath.lineTo(65.0, 32.6795)
         piePath.arcTo(20.0, 30.0, 60.0, 40.0, 60.0, 240.0)
         piePath.closeSubpath()
 
-        polygonPath = QtGui.QPainterPath()
+        # 画多边形
+        polygonPath = QPainterPath()
         polygonPath.moveTo(10.0, 80.0)
         polygonPath.lineTo(20.0, 10.0)
         polygonPath.lineTo(80.0, 30.0)
         polygonPath.lineTo(90.0, 70.0)
         polygonPath.closeSubpath()
 
-        groupPath = QtGui.QPainterPath()
+        # 画群组
+        groupPath = QPainterPath()
         groupPath.moveTo(60.0, 40.0)
         groupPath.arcTo(20.0, 20.0, 40.0, 40.0, 0.0, 360.0)
         groupPath.moveTo(40.0, 40.0)
@@ -139,16 +147,16 @@ class Window(QtGui.QWidget):
         groupPath.lineTo(80.0, 40.0)
         groupPath.closeSubpath()
 
-        textPath = QtGui.QPainterPath()
-        timesFont = QtGui.QFont("Times", 50)
-        timesFont.setStyleStrategy(QtGui.QFont.ForceOutline)
+        textPath = QPainterPath()
+        timesFont = QFont("Times", 50)
+        timesFont.setStyleStrategy(QFont.ForceOutline)
         textPath.addText(10, 70, timesFont, "Qt")
 
-        bezierPath = QtGui.QPainterPath()
+        bezierPath = QPainterPath()
         bezierPath.moveTo(20, 30)
         bezierPath.cubicTo(80, 0, 50, 50, 80, 80)
 
-        starPath = QtGui.QPainterPath()
+        starPath = QPainterPath()
         starPath.moveTo(90, 50)
         for i in range(1, 5):
             starPath.lineTo(50 + 40 * cos(0.8 * i * pi),
@@ -162,50 +170,50 @@ class Window(QtGui.QWidget):
                             RenderArea(starPath)]
         assert len(self.renderAreas) == 9
 
-        self.fillRuleComboBox = QtGui.QComboBox()
-        self.fillRuleComboBox.addItem("Odd Even", QtCore.Qt.OddEvenFill)
-        self.fillRuleComboBox.addItem("Winding", QtCore.Qt.WindingFill)
+        self.fillRuleComboBox = QComboBox()
+        self.fillRuleComboBox.addItem("Odd Even", Qt.OddEvenFill)
+        self.fillRuleComboBox.addItem("Winding", Qt.WindingFill)
 
-        fillRuleLabel = QtGui.QLabel("Fill &Rule:")
+        fillRuleLabel = QLabel("Fill &Rule:")
         fillRuleLabel.setBuddy(self.fillRuleComboBox)
 
-        self.fillColor1ComboBox = QtGui.QComboBox()
+        self.fillColor1ComboBox = QComboBox()
         self.populateWithColors(self.fillColor1ComboBox)
         self.fillColor1ComboBox.setCurrentIndex(
             self.fillColor1ComboBox.findText("mediumslateblue"))
 
-        self.fillColor2ComboBox = QtGui.QComboBox()
+        self.fillColor2ComboBox = QComboBox()
         self.populateWithColors(self.fillColor2ComboBox)
         self.fillColor2ComboBox.setCurrentIndex(
             self.fillColor2ComboBox.findText("cornsilk"))
 
-        fillGradientLabel = QtGui.QLabel("&Fill Gradient:")
+        fillGradientLabel = QLabel("&Fill Gradient:")
         fillGradientLabel.setBuddy(self.fillColor1ComboBox)
 
-        fillToLabel = QtGui.QLabel("to")
-        fillToLabel.setSizePolicy(QtGui.QSizePolicy.Fixed,
-                                  QtGui.QSizePolicy.Fixed)
+        fillToLabel = QLabel("to")
+        fillToLabel.setSizePolicy(QSizePolicy.Fixed,
+                                  QSizePolicy.Fixed)
 
-        self.penWidthSpinBox = QtGui.QSpinBox()
+        self.penWidthSpinBox = QSpinBox()
         self.penWidthSpinBox.setRange(0, 20)
 
-        penWidthLabel = QtGui.QLabel("&Pen Width:")
+        penWidthLabel = QLabel("&Pen Width:")
         penWidthLabel.setBuddy(self.penWidthSpinBox)
 
-        self.penColorComboBox = QtGui.QComboBox()
+        self.penColorComboBox = QComboBox()
         self.populateWithColors(self.penColorComboBox)
         self.penColorComboBox.setCurrentIndex(
             self.penColorComboBox.findText('darkslateblue'))
 
-        penColorLabel = QtGui.QLabel("Pen &Color:")
+        penColorLabel = QLabel("Pen &Color:")
         penColorLabel.setBuddy(self.penColorComboBox)
 
-        self.rotationAngleSpinBox = QtGui.QSpinBox()
+        self.rotationAngleSpinBox = QSpinBox()
         self.rotationAngleSpinBox.setRange(0, 359)
         self.rotationAngleSpinBox.setWrapping(True)
         self.rotationAngleSpinBox.setSuffix('\xB0')
 
-        rotationAngleLabel = QtGui.QLabel("&Rotation Angle:")
+        rotationAngleLabel = QLabel("&Rotation Angle:")
         rotationAngleLabel.setBuddy(self.rotationAngleSpinBox)
 
         self.fillRuleComboBox.activated.connect(self.fillRuleChanged)
@@ -217,11 +225,11 @@ class Window(QtGui.QWidget):
             self.penWidthSpinBox.valueChanged.connect(self.renderAreas[i].setPenWidth)
             self.rotationAngleSpinBox.valueChanged.connect(self.renderAreas[i].setRotationAngle)
 
-        topLayout = QtGui.QGridLayout()
+        topLayout = QGridLayout()
         for i in range(Window.NumRenderAreas):
             topLayout.addWidget(self.renderAreas[i], i / 3, i % 3)
 
-        mainLayout = QtGui.QGridLayout()
+        mainLayout = QGridLayout()
         mainLayout.addLayout(topLayout, 0, 0, 1, 4)
         mainLayout.addWidget(fillRuleLabel, 1, 0)
         mainLayout.addWidget(self.fillRuleComboBox, 1, 1, 1, 3)
@@ -245,26 +253,26 @@ class Window(QtGui.QWidget):
         self.setWindowTitle("Painter Paths")
 
     def fillRuleChanged(self):
-        rule = QtCore.Qt.FillRule(self.currentItemData(self.fillRuleComboBox))
+        rule = Qt.FillRule(self.currentItemData(self.fillRuleComboBox))
 
         for i in range(Window.NumRenderAreas):
             self.renderAreas[i].setFillRule(rule)
 
     def fillGradientChanged(self):
-        color1 = QtGui.QColor(self.currentItemData(self.fillColor1ComboBox))
-        color2 = QtGui.QColor(self.currentItemData(self.fillColor2ComboBox))
+        color1 = QColor(self.currentItemData(self.fillColor1ComboBox))
+        color2 = QColor(self.currentItemData(self.fillColor2ComboBox))
 
         for i in range(Window.NumRenderAreas):
             self.renderAreas[i].setFillGradient(color1, color2)
 
     def penColorChanged(self):
-        color = QtGui.QColor(self.currentItemData(self.penColorComboBox))
+        color = QColor(self.currentItemData(self.penColorComboBox))
 
         for i in range(Window.NumRenderAreas):
             self.renderAreas[i].setPenColor(color)
 
     def populateWithColors(self, comboBox):
-        colorNames = QtGui.QColor.colorNames()
+        colorNames = QColor.colorNames()
         for name in colorNames:
             comboBox.addItem(name, name)
 
@@ -275,7 +283,7 @@ class Window(QtGui.QWidget):
 if __name__ == '__main__':
     import sys
 
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     window = Window()
     window.show()
     sys.exit(app.exec_())

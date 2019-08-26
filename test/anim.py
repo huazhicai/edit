@@ -1,11 +1,10 @@
 # coding:utf-8
+import sys
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
-import sys
 from functools import partial
 # import animatedtiles_rc2
-from PyQt5.QtWidgets import QGraphicsView, QApplication, QGraphicsScene, QGraphicsRectItem, QStyle, QGraphicsItem, \
-    QGraphicsWidget
+from PyQt5.QtWidgets import *
 
 
 class Button(QGraphicsWidget):
@@ -15,7 +14,7 @@ class Button(QGraphicsWidget):
         super(Button, self).__init__(parent)
 
         self._pix = pixmap
-        self.setAcceptHoverEvents(True)
+        self.setAcceptHoverEvents(True)  # 设置接收鼠标悬浮事件
         self.setCacheMode(QGraphicsItem.DeviceCoordinateCache)
 
     def boundingRect(self):
@@ -24,10 +23,9 @@ class Button(QGraphicsWidget):
     def shape(self):
         path = QPainterPath()
         path.addEllipse(self.boundingRect())
-
         return path
 
-    def paint(self, painter, option, widget):
+    def paint(self, painter, option, widget=None):
         down = option.state & QStyle.State_Sunken
         r = self.boundingRect()
 
@@ -149,12 +147,16 @@ class ButtonPanel(QObject):
 
 
 class MyScene(QGraphicsScene):
+    """场景控件"""
+
     def __init__(self):
         super(MyScene, self).__init__()
+        # 创建按钮面板控件对象
         buttonPanel = ButtonPanel()
 
         self.addItem(buttonPanel.panel)
-        buttonPanel.panel.scale(0.75, 0.75)
+        # 缩放
+        buttonPanel.panel.scale()
         buttonPanel.panel.setPos(70, 70)
 
         # self.animation = QPropertyAnimation(buttonPanel, 'pos')
@@ -169,7 +171,9 @@ class MyScene(QGraphicsScene):
         # self.animation.setEndValue(QRectF(-50,-50,100,100))
         # self.animation.setEasingCurve(QEasingCurve.OutBounce)
 
-        self.animation = QPropertyAnimation(buttonPanel, 'fold')
+        # 1. 创建一个动画对象, 并且设置目标 属性
+        self.animation = QPropertyAnimation(buttonPanel)
+        # 2. 动画时长
         self.animation.setDuration(3000)
         self.animation.setStartValue(QRectF(-65, -65, 130, 130))
         self.animation.setEndValue(QRectF(0, 0, 1, 1))
@@ -181,15 +185,27 @@ class MyView(QGraphicsView):
         super(MyView, self).__init__()
 
     def resizeEvent(self, event):
+        """调整事件大小"""
         super(MyView, self).resizeEvent(event)
+        """适合视口， 自动缩放"""
         self.fitInView(self.sceneRect(), Qt.KeepAspectRatio)
 
 
 if __name__ == '__main__':
+    # 1.创建一个应用程序，传递命令行参数列表
     app = QApplication(sys.argv)
+
+    # 2. 控件的操作
+    # 创建控件,设置控件(大小,位置,样式...),事件,信号的处理
+    # 2.1 创建控件
+    # 当我们创建一个控件之后, 如果说,这个控件没有父控件, 则把它当做顶层控件(窗口)
+    # 系统会自动的给窗口添加一些装饰(标题栏), 窗口控件具备一些特性(设置标题,图标)
     scene = MyScene()
+    # 设定场景边框
     scene.setSceneRect(QRectF(-200, -200, 400, 400))
+    # 创建视图控件
     w = MyView()
+    # 场景对象传递给视图
     w.setScene(scene)
     w.show()
-    app.exec_()
+    sys.exit(app.exec_())

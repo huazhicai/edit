@@ -39,6 +39,7 @@ class MyScene(QGraphicsScene):
         subB = self.submenu.addAction('Sub B')
         subC = self.submenu.addAction('Sub C')
 
+        # 信号槽
         actionA.triggered.connect(self.aClicked)
         actionB.triggered.connect(self.bClicked)
         actionC.triggered.connect(self.cClicked)
@@ -47,6 +48,7 @@ class MyScene(QGraphicsScene):
         subB.triggered.connect(self.subBClicked)
         subC.triggered.connect(self.subCClicked)
 
+    # 上下文菜单，右键弹出菜单rightmenu
     def contextMenuEvent(self, event):
         self.menu.exec_(event.screenPos())
 
@@ -77,13 +79,17 @@ class MyView(QGraphicsView):
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
+        # 创建视图场景
         scene = MyScene()
+        # 空件对象
         rect = Rect()
         scene.addItem(rect)
         rect.setPos(0, 0)
 
+        # 图形视图对象
         view = QGraphicsView(scene)
 
+        # 居中
         self.setCentralWidget(view)
 
 
@@ -91,7 +97,8 @@ def main():
     app = QApplication(sys.argv)
     w = MainWindow()
     w.show()
-    app.exec_()
+    w.setGeometry(10, 10, 300, 300)
+    sys.exit(app.exec_())
 
 
 if __name__ == '__main__':

@@ -10,6 +10,7 @@ from PyQt5.QtWidgets import *
 class CommandSet(QUndoCommand):
     def __init__(self, displayWidget, origText, text, description):
         super(CommandSet, self).__init__(description)
+
         self.displayWidget = displayWidget
         self.origText = origText
         self.text = text
@@ -28,10 +29,11 @@ class MainWindow(QMainWindow):
         self.createMenus()
 
         cWidget = QWidget()
-        layout = QVBoxLayout(cWidget)
+        layout = QVBoxLayout(cWidget)  # 直接传入父控件，就不用setLayout() 了
 
         helloBtn = QPushButton('Hello')
         worldBtn = QPushButton('World')
+        # 用偏函数给槽函数传入参数
         helloBtn.clicked.connect(partial(self.buttonClicked, 'hello'))
         worldBtn.clicked.connect(partial(self.buttonClicked, 'world'))
         self.display = QLabel('')
@@ -58,15 +60,17 @@ class MainWindow(QMainWindow):
             statusTip='Redo previous operation',
             triggered=self.redo)
 
+        # 菜单bar中加入File 菜单
         self.fileMenu = self.menuBar().addMenu('&File')
+        # 在菜单中加入操作
         self.fileMenu.addAction(self.undoAction)
         self.fileMenu.addAction(self.redoAction)
 
     def buttonClicked(self, val):
         origText = str(self.display.text())
-        commandSet = CommandSet(self.display,
-                                origText,
-                                val,
+        commandSet = CommandSet(self.display,  # QLabel('')对象
+                                origText,     #
+                                val,           # 'hello' or 'world'
                                 'set display text')
         self.undoStack.push(commandSet)
 
@@ -81,4 +85,5 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     w = MainWindow()
     w.show()
+    w.setGeometry(100, 100, 300, 300)
     sys.exit(app.exec_())

@@ -368,7 +368,7 @@
 		"args": [
 			{
 				"type": "Int",
-				"name": [ "Index", "6e8aecb2-fa80-46d0-9445-24a427d4e87b" ] 
+				"name": [ "Index", "6e8aecb2-fa80-46d0-9445-24a427d4e87b" ]
 			},
 			{
 				"type": "Array",
@@ -390,7 +390,7 @@
 		"args": [
 			{
 				"type": "Int",
-				"name": [ "Index", "aac05ebd-cebc-4470-a958-936f306c69ad" ] 
+				"name": [ "Index", "aac05ebd-cebc-4470-a958-936f306c69ad" ]
 			},
 			{
 				"type": "Array",
@@ -412,7 +412,7 @@
 		"args": [
 			{
 				"type": "Int",
-				"name": [ "Index", "be1df8aa-72c5-41ff-86c2-9ac7d6c704ed" ] 
+				"name": [ "Index", "be1df8aa-72c5-41ff-86c2-9ac7d6c704ed" ]
 			},
 			{
 				"type": "Array",
@@ -1052,7 +1052,7 @@
 			{
 				"type": "Bool",
 				"name": [ "Loop", "44807698-a058-4498-9f48-774eb2633e61" ],
-                "default": true 
+                "default": true
 			},
 			{
 				"type": "Event",

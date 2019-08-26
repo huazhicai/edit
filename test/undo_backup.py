@@ -1,3 +1,4 @@
+from PyQt5.QtCore import QPointF
 from PyQt5.QtWidgets import QUndoCommand
 
 

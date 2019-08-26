@@ -15,7 +15,7 @@ def test():
     app = QApplication(sys.argv)
     w = SaveQuestionDialog(doneChoice=doneChoose)
     w.show()
-    app.exec_()
+    sys.exit(app.exec_())
 
 
 if __name__ == '__main__':

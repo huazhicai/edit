@@ -357,35 +357,46 @@ class SidePanel(QWidget):
 
 
 class MainWindow(QMainWindow):
-    def __init__(self):
-        super(MainWindow, self).__init__()
+    def __init__(self, parent=None):
+        super(MainWindow, self).__init__(parent)
 
+        # 在主窗口创建执行操作
         self.createActions()
+        # 在主窗口创建工具条
         self.createToolBar()
 
+        # 创建图形场景对象
         self.scene = DiagramScene()
+        # 设置图形场景对象坐标和边框
         self.scene.setSceneRect(QRectF(0, 0, 5000, 5000))
+        # 图形场景被选择，触发self.itemSelected方法
         self.scene.itemSelected.connect(self.itemSelected)
 
-        layout = QHBoxLayout()
+        # 创建图形视口对象，传递图形场景对象作为参数
         self.view = QGraphicsView(self.scene)
+        # 创建侧边栏控件对象
         self.sidePanel = SidePanel()
+        # 侧边栏值对象值更新信号，触发self.resetDiagramItemTitle方法
         self.sidePanel.valueUpdated.connect(self.resetDiagramItemTitle)
 
+        # 创建水平布局对象
+        layout = QHBoxLayout()
         layout.addWidget(self.view)
         layout.addWidget(self.sidePanel)
 
+        # 创建主控件对象
         self.main_widget = QWidget()
+        # 把布局管理器对象设置给需要布局的父控件
         self.main_widget.setLayout(layout)
-
+        # 在窗口中把主控件设置为中心控件
         self.setCentralWidget(self.main_widget)
+        # 窗口标题
         self.setWindowTitle('Diagram Scene')
 
     def createActions(self):
         self.addAction = QAction(
             QIcon('./images/add.png'),
-            '&Add item',
-            self,
+            '&Add item', self,
             shortcut='Ctrl++',
             statusTip='Add a new item',
             triggered=self.addNewItem)
@@ -474,14 +485,20 @@ class MainWindow(QMainWindow):
 
 
 def main():
+    # 1. 创建一个应用程序对象，传递命令行参数列表
     app = QApplication(sys.argv)
 
+    # 2.1 创建顶层控件对象
     mainWindow = MainWindow()
+    # 2.2 设置控件
     mainWindow.setGeometry(100, 100, 1200, 800)
+    # 获取屏幕尺寸QRect(0， 0， 1440， 900）
     screenRect = app.desktop().screenGeometry()
-    mainWindow.move(screenRect.center() - mainWindow.rect().center());
+    # 中心坐标点QPoint(719, 499) (599, 399)
+    mainWindow.move(screenRect.center() - mainWindow.rect().center())
+    # 2.3 展示控件
     mainWindow.show()
-
+    # 3. 应用程序的执行, 进入到消息循环
     sys.exit(app.exec_())
 
 

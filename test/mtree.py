@@ -8,7 +8,7 @@ class MenuTree(object):
         self.tree = self.buildTree(meta_data)
 
     def buildTree(self, data):
-        tree = OrderedDict()
+        tree = OrderedDict()   # 有序字典
         for item in data:
             raw_category = item['category']
             name = item['name']

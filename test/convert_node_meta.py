@@ -20,7 +20,7 @@ def convert_file():
                 ret_name = ret['name']
                 ret['name'] = [ret_name, str(uuid.uuid1())]
 
-    f = open('meta/nodes_new.json', 'w')
+    f = open('/Users/mac/PycharmProjects/crawler/edit/meta/nodes.json', 'w')
     json.dump(nodes_data, f, indent=4)
     f.close()
 
