@@ -1,7 +1,8 @@
 # coding:utf-8
-
-# from PyQt5.Qt import *
 import sys
+import os
+import json
+import traceback
 
 from PyQt5.Qt import Qt
 from PyQt5.QtCore import pyqtSignal, QRectF, QTimer
@@ -12,11 +13,8 @@ from controller import ControllerManager, Controller
 from scene import DiagramScene, TemplateScene
 from view import DiagramView
 from dlg import ErrorConsoleDialog, FindDialog, ReplaceDialog, ScriptModeDialog
-from mutil import loadJsonData, dumpJsonData
-import os
-import json
 from functools import partial
-import traceback
+
 
 # 共用用一个导表工具
 sys.path.append(os.path.join(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir), 'csv2py'))
@@ -25,41 +23,49 @@ import logger
 
 
 class GraphWidget(QWidget):
+    """绘制图形场景"""
     editStateChanged = pyqtSignal()
 
     def __init__(self, parent=None):
         super(GraphWidget, self).__init__(parent=parent)
 
-        self.editFlag = False
+        self.editFlag = False  # 未在编辑转态
 
         self.controllerKey = ControllerManager().addController()
         self.sceneWidth = 10000
         self.sceneHeight = 10000
         self.bindingFile = None
 
+        # 创建图形场景对象，传递控制键参数
         self.scene = DiagramScene(self.controllerKey)
         # self.scene.setSceneRect(QRectF(-self.sceneWidth / 2.0, -self.sceneHeight / 2.0,
         #                                self.sceneWidth, self.sceneHeight))
+        # 将信号itemSelected连接到指定槽函数
         self.scene.itemSelected.connect(self.itemSelected)
         self.scene.resetModeSignal.connect(self.modeReseted)
         self.scene.editSignal.connect(self.sceneEdited)
 
+        # 创建图形视口对象，传入图形场景作对象为参数
         self.view = DiagramView(self.scene)
         # self.view.setBackgroundBrush(QColor(230, 200, 167))
         self.view.setBackgroundBrush(QColor(41, 41, 41))
-        self.view.setMouseTracking(True)
+        self.view.setMouseTracking(True)       # 视图鼠标跟踪
 
+        # 创建水平布局管理器对象
         layout = QHBoxLayout()
+        # 视图控件对象添加到布局管理器中
         layout.addWidget(self.view)
+        # 把布局管理器设置给需要布局的父控件
         self.setLayout(layout)
 
+        # 空白控件，新建节点快捷栏
         self.blankWidget = QuickDockWidget()
         self.blankWidget.setParent(self)
         self.blankWidget.resize(900, 80)
         self.blankWidget.show()
         self.blankWidget.raise_()
 
-        self.blankWidget.hide()
+        self.blankWidget.hide()     # 默认掩藏节点快捷栏
 
         self.findResult = set()
         self.findResultItems = []

@@ -144,7 +144,7 @@ if __name__ == '__main__':
 		print('usage: python backcompat.py [filename]')
 		sys.exit(1)
 
-	print('converting',sys.argv[1])
+	print('converting', sys.argv[1])
 	
 	if convertFile(sys.argv[1]):
 		print('convert success')

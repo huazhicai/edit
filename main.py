@@ -24,12 +24,15 @@ from version import buildDate, version
 
 
 class TabWidget(QTabWidget):
+    # 声明无参数的信号
     doubleClickSignal = pyqtSignal()
 
     def __init__(self):
         super(TabWidget, self).__init__()
 
     def mouseDoubleClickEvent(self, event):
+        """鼠标双击事件"""
+        # 发射鼠标双击信号
         self.doubleClickSignal.emit()
 
 
@@ -38,15 +41,16 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__(parent)
         # 设置控件
         self.setWindowTitle('Node Editor')
-        # self.setMinimumSize(600, 400)  # 设置窗口开启最小尺寸
+        self.setMinimumSize(600, 400)  # 设置窗口最小尺寸,就是不能拖放比此小
         self.setAcceptDrops(True)  # 设置接受拖放事件
 
-        self.prefs = data.load_prefs()
+        self.prefs = data.load_prefs()  # 加载偏好设置
         self.mousePosition = (0, 0)
         FontManager()
 
-        self.tabCount = 0
+        self.tabCount = 0  # 初始窗口标题视图数
 
+        self.createTabWidget()  # 创建新new tab
         self.createActions()
         self.createMenus()
         # self.createToolBar()
@@ -54,41 +58,69 @@ class MainWindow(QMainWindow):
         self.sceneWidth = 10000
         self.sceneHeight = 10000
 
-        self.createTabWidget()
-
+        # 布局管理器对象
         layout = QHBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
         layout.addWidget(self.tabWidget)
 
+        # 用于布局的父类控件对象
         self.main_widget = QWidget()
+        # 把对象管理器设置给需要布局的父类对象
         self.main_widget.setLayout(layout)
 
+        # 主控件窗口居中
         self.setCentralWidget(self.main_widget)
-        self.scriptsData = {}
+        self.scriptsData = {}  # 脚本字典数据
 
     def createTabWidget(self):
+        # 新选项卡对象，新定义为了加入一个双击新建信号
         self.tabWidget = TabWidget()
+        # 设置大小策略，
         self.tabWidget.setSizePolicy(QSizePolicy.Preferred,
                                      QSizePolicy.Ignored)
         self.tabWidget.setMovable(True)
         self.tabWidget.setTabsClosable(True)
         self.tabWidget.setTabShape(QTabWidget.Triangular)
+        # 将信号tabCloseRequested连接到指定槽函数，关闭选项卡
         self.tabWidget.tabCloseRequested.connect(self.closeTab)
+        # 双击新建选项卡
         self.tabWidget.doubleClickSignal.connect(self.addTab)
         self.tabWidget.setStyleSheet('#pane {margin:0; padding: 0}')
+
+    def closeTab(self, index):
+        widget = self.tabWidget.widget(index)
+        if isinstance(widget, GraphWidget):
+            if not widget.editFlag:
+                self.clearTab(index)
+                return
+
+            dlg = SaveQuestionDialog(doneChoice=self.whetherToSave,
+                                     index=index)
+            if dlg.exec_():
+                print('save or discard')
+            else:
+                print('cancel')
+        else:
+            if widget.editFlag:
+                widget.saveTemplate()
+            self.clearTab(index)
 
     def addTab(self, isTemplate=False):
         if not isTemplate:
             tab = GraphWidget()
+            # 编辑转态改变信号，连接槽函数，更新字幕
             tab.editStateChanged.connect(self.updateTabCaption)
+            # 在视图上的鼠标位置更改信号，连接槽函数，更新鼠标位置
             tab.view.mouseMoved.connect(self.updateMousePosition)
             tempTitle = 'Untitled'
             if self.tabCount > 0:
                 tempTitle += ' %d' % self.tabCount
             self.tabCount += 1
+            # 调用源码函数，增加新的页面，页面个名字tempTitle. 底层是C++实现的
             self.tabWidget.addTab(tab, tempTitle)
-            self.tabWidget.setCurrentWidget(tab)
-            tab.setScriptMode('new')
+            self.tabWidget.setCurrentWidget(tab)   # 当前的tab就是新建的tab
+            tab.setScriptMode('new')   # 设置脚本模式
+            # 设置页面的提示信息,
             self.tabWidget.setTabToolTip(self.tabWidget.currentIndex(), 'new')
         else:
             tab = TemplateWidget()
@@ -98,12 +130,21 @@ class MainWindow(QMainWindow):
             self.tabWidget.addTab(tab, tempTitle)
             self.tabWidget.setCurrentWidget(tab)
 
+    def createStatusBar(self):
+        self.statusBar().showMessage("")
+        self.status_mouse_pos = QLabel("")
+        self.statusBar().addPermanentWidget(self.status_mouse_pos)
+        self.nodeeditor.view.scenePosChanged.connect(self.onScenePosChanged)
+
+    def onScenePosChanged(self, x, y):
+        self.status_mouse_pos.setText("Scene Pos: [%d, %d]" % (x, y))
+
     def createActions(self):
         self.deleteAction = QAction(
             QIcon('./images/delete.png'),
             '&Delete item',
             self,
-            shortcut='Del',
+            shortcut='Delete',
             statusTip='Delete a item',
             triggered=self.deleteItem)
 
@@ -828,56 +869,57 @@ class MainWindow(QMainWindow):
         self.aboutMenu = self.menuBar().addMenu('&Help')
         self.aboutMenu.addAction(self.aboutAction)
 
-    # def createToolBar(self):
-    #     self.editToolBar = self.addToolBar("Edit")
-    #     self.editToolBar.addAction(self.deleteAction)
-    #
-    #     addButton = QToolButton()
-    #     addButton.setCheckable(True)
-    #     addButton.setIcon(QIcon('./images/add.png'))
-    #
-    #     self.pointerButton = QToolButton()
-    #     self.pointerButton.setCheckable(True)
-    #     self.pointerButton.setChecked(True)
-    #     self.pointerButton.setIcon(QIcon('./images/pointer.png'))
-    #     linePointerButton = QToolButton()
-    #     linePointerButton.setCheckable(True)
-    #     linePointerButton.setIcon(QIcon('./images/linepointer.png'))
-    #
-    #     self.pointerTypeGroup = QButtonGroup()
-    #     self.pointerTypeGroup.addButton(addButton, DiagramScene.InsertItem)
-    #     self.pointerTypeGroup.addButton(self.pointerButton, DiagramScene.MoveItem)
-    #     self.pointerTypeGroup.addButton(linePointerButton, DiagramScene.InsertLine)
-    #     # self.pointerTypeGroup.buttonClicked[int].connect(self.pointerGroupClicked)
-    #
-    #     self.sceneScaleCombo = QComboBox()
-    #     self.sceneScaleCombo.addItems(['50%','75%','100%','125%','150%'])
-    #     self.sceneScaleCombo.setCurrentIndex(2)
-    #     self.sceneScaleCombo.currentIndexChanged[str].connect(self.sceneScaleChanged)
-    #
-    #     self.itemTypeCombo = QComboBox()
-    #     self.itemTypeCombo.addItems(ControllerManager().optionalItemNames())
-    #     self.itemTypeCombo.setCurrentIndex(0)
-    #     self.itemTypeCombo.currentIndexChanged[str].connect(self.itemTypeChanged)
-    #
-    #     self.pointerToolbar = self.addToolBar('Pointer type')
-    #     self.pointerToolbar.addWidget(self.pointerButton)
-    #     self.pointerToolbar.addWidget(linePointerButton)
-    #     self.pointerToolbar.addWidget(self.sceneScaleCombo)
-    #     self.pointerToolbar.addWidget(addButton)
-    #     self.pointerToolbar.addWidget(self.itemTypeCombo)
-    #
-    #     self.gameToolbar = self.addToolBar('Game')
-    #     self.gameToolbar.addAction(self.exportTableAction)
-    #     self.gameToolbar.addAction(self.runAction)
+        # def createToolBar(self):
+        #     self.editToolBar = self.addToolBar("Edit")
+        #     self.editToolBar.addAction(self.deleteAction)
+        #
+        #     addButton = QToolButton()
+        #     addButton.setCheckable(True)
+        #     addButton.setIcon(QIcon('./images/add.png'))
+        #
+        #     self.pointerButton = QToolButton()
+        #     self.pointerButton.setCheckable(True)
+        #     self.pointerButton.setChecked(True)
+        #     self.pointerButton.setIcon(QIcon('./images/pointer.png'))
+        #     linePointerButton = QToolButton()
+        #     linePointerButton.setCheckable(True)
+        #     linePointerButton.setIcon(QIcon('./images/linepointer.png'))
+        #
+        #     self.pointerTypeGroup = QButtonGroup()
+        #     self.pointerTypeGroup.addButton(addButton, DiagramScene.InsertItem)
+        #     self.pointerTypeGroup.addButton(self.pointerButton, DiagramScene.MoveItem)
+        #     self.pointerTypeGroup.addButton(linePointerButton, DiagramScene.InsertLine)
+        #     # self.pointerTypeGroup.buttonClicked[int].connect(self.pointerGroupClicked)
+        #
+        #     self.sceneScaleCombo = QComboBox()
+        #     self.sceneScaleCombo.addItems(['50%','75%','100%','125%','150%'])
+        #     self.sceneScaleCombo.setCurrentIndex(2)
+        #     self.sceneScaleCombo.currentIndexChanged[str].connect(self.sceneScaleChanged)
+        #
+        #     self.itemTypeCombo = QComboBox()
+        #     self.itemTypeCombo.addItems(ControllerManager().optionalItemNames())
+        #     self.itemTypeCombo.setCurrentIndex(0)
+        #     self.itemTypeCombo.currentIndexChanged[str].connect(self.itemTypeChanged)
+        #
+        #     self.pointerToolbar = self.addToolBar('Pointer type')
+        #     self.pointerToolbar.addWidget(self.pointerButton)
+        #     self.pointerToolbar.addWidget(linePointerButton)
+        #     self.pointerToolbar.addWidget(self.sceneScaleCombo)
+        #     self.pointerToolbar.addWidget(addButton)
+        #     self.pointerToolbar.addWidget(self.itemTypeCombo)
+        #
+        #     self.gameToolbar = self.addToolBar('Game')
+        #     self.gameToolbar.addAction(self.exportTableAction)
+        #     self.gameToolbar.addAction(self.runAction)
         pass
 
     def deleteItem(self):
-        graphWidget = self.tabWidget.currentWidget()
-        if not isinstance(graphWidget, GraphWidget):
+        # 当前标签场景
+        graphicWidget = self.tabWidget.currentWidget()
+        if not isinstance(graphicWidget, GraphWidget):
             return
 
-        graphWidget.deleteItem()
+        graphicWidget.deleteItem()
 
     def dragEnterEvent(self, event):
         event.accept()
@@ -951,6 +993,7 @@ class MainWindow(QMainWindow):
         sys.exit()
 
     def savePrefs(self):
+        """保存偏好设置"""
         self.prefs['scene_width'] = self.sceneWidth
         self.prefs['scene_height'] = self.sceneHeight
         data.save_prefs(self.prefs)
@@ -1030,14 +1073,14 @@ def main():
     # 2. 控件的操作
     # 2.1 创建控件
     mainWindow = MainWindow()
-    # 2.1 设置控件
-    mainWindow.setGeometry(100, 100, 1200, 800)  # 不小于最小尺寸setMinimize
+    # 2.2 设置控件
     screenRect = app.desktop().screenGeometry()  # 屏幕几何位置、尺寸(0, 0, 1440, 900)
     # screenRect.center() 屏幕中心坐标（719，449）
     # 窗口中心点移动到屏幕中心点
     mainWindow.move(screenRect.center() - mainWindow.rect().center())
     # 2.3 展示控件
     mainWindow.show()
+    mainWindow.setGeometry(100, 100, 1200, 800)  # 不小于最小尺寸setMinimize
 
     # 3. 应用程序的执行，进入消息循环
     sys.exit(app.exec_())

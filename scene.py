@@ -16,7 +16,6 @@ from clipboard import GraphisClipboard
 from mechan import mechanism
 from collections import OrderedDict
 from copy import deepcopy
-import json
 from mutil import loadJsonData, dumpJsonData
 import os
 
@@ -55,6 +54,7 @@ class DiagramScene(QGraphicsScene):
         self.uuididxmap = uuididx
 
     def createContextMenu(self):
+        """创建右键菜单栏"""
         self.menu = QMenu()
 
         menuTreeData = ControllerManager().menuTree.tree

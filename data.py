@@ -3,11 +3,10 @@ import json
 import os
 from mutil import loadJsonData, dumpJsonData
 
-currnt_dir = os.path.dirname(os.path.abspath(__file__))
-
 
 def load_nodes_meta_information():
-    return loadJsonData(os.path.join(currnt_dir, 'meta', 'nodes.json'))
+    """右键菜单模板数据"""
+    return loadJsonData(os.path.join('meta', 'nodes.json'))
 
 
 def load_graph_information(filename):
