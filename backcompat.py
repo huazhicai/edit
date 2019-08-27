@@ -140,7 +140,6 @@ def convertFile(filename):
 
 if __name__ == '__main__':
     import sys
-
     if len(sys.argv) != 2:
         print('usage: python backcompat.py [filename]')
         sys.exit(1)
@@ -151,3 +150,5 @@ if __name__ == '__main__':
         print('convert success')
     else:
         print('convert failed')
+
+

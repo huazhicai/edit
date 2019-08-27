@@ -130,8 +130,8 @@ class Arrow(QGraphicsLineItem):
 class DiagramItem(QGraphicsItem):
     currentId = 1
 
-    def __init__(self, parent=None, scene=None, title=None):
-        super(DiagramItem, self).__init__(parent, scene)
+    def __init__(self, parent=None, title=None):
+        super(DiagramItem, self).__init__(parent)
 
         self.setToolTip(
             "Click and drag this color onto the robot!"
@@ -195,17 +195,24 @@ class DiagramItem(QGraphicsItem):
         else:
             penWidth = 1
 
+        # 创建画笔对象
         pen = QPen()
+        # 画笔对象属性设置
         pen.setColor(Qt.black)
         pen.setWidth(penWidth)
 
+        # 把画笔设置给画师
         painter.setPen(pen)
 
+        # 把背景刷设置给画师
         painter.setBrush(Qt.green)
+        # 画师按路径画图
         painter.drawRect(self.headRect)
+        # 创建字体对象
         font = QFont()
         if not self.title:
             self.title = 'Hello'
+        # 画师写标题
         painter.drawText(self.headRect, Qt.AlignCenter, self.title)
         painter.setBrush(Qt.white)
         painter.drawRect(self.bodyRect)
@@ -325,34 +332,41 @@ class DiagramScene(QGraphicsScene):
 
 
 class SidePanel(QWidget):
+    # 声明带一个str类型参数的信号,并赋值给
     valueUpdated = pyqtSignal(str)
 
     def __init__(self):
         super(SidePanel, self).__init__()
 
         nameLabel = QLabel('Name')
-        self.nameInput = QLineEdit('')
+        self.nameInput = QLineEdit('hello')
 
         changeButton = QPushButton('change')
+        # 将信号clicked连接到指定槽函数
         changeButton.clicked.connect(self.changeClicked)
+        # 表格布局管理器对象
         wlayout = QGridLayout()
         wlayout.addWidget(nameLabel, 0, 0)
         wlayout.addWidget(self.nameInput, 0, 1)
         wlayout.addWidget(changeButton, 1, 1)
+        # 接收布局的父控件
         widget = QWidget()
         widget.setLayout(wlayout)
 
+        # 总体布局
         main_layout = QVBoxLayout()
         main_layout.addWidget(widget)
-
         self.setLayout(main_layout)
 
+        # 设置最小宽度
         self.setMinimumWidth(200)
 
     def setModel(self, model):
         self.model = model
 
     def changeClicked(self):
+        # 发射信号
+        print("valueUpdated emit, value:", self.nameInput.text())
         self.valueUpdated.emit(self.nameInput.text())
 
 
@@ -367,9 +381,9 @@ class MainWindow(QMainWindow):
 
         # 创建图形场景对象
         self.scene = DiagramScene()
-        # 设置图形场景对象坐标和边框
+        # 设置图形场景对象坐标和尺寸
         self.scene.setSceneRect(QRectF(0, 0, 5000, 5000))
-        # 图形场景被选择，触发self.itemSelected方法
+        # 图形场景项目被选择，触发self.itemSelected方法
         self.scene.itemSelected.connect(self.itemSelected)
 
         # 创建图形视口对象，传递图形场景对象作为参数
@@ -384,9 +398,9 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.view)
         layout.addWidget(self.sidePanel)
 
-        # 创建主控件对象
+        # 创建父控件对象，用于布局
         self.main_widget = QWidget()
-        # 把布局管理器对象设置给需要布局的父控件
+        # 把布局管理器对象设置给需要布局的父控件对象
         self.main_widget.setLayout(layout)
         # 在窗口中把主控件设置为中心控件
         self.setCentralWidget(self.main_widget)
@@ -439,6 +453,7 @@ class MainWindow(QMainWindow):
         self.pointerTypeGroup.addButton(linePointerButton, DiagramScene.InsertLine)
         self.pointerTypeGroup.buttonClicked[int].connect(self.pointerGroupClicked)
 
+        # 场景比例组合盒
         self.sceneScaleCombo = QComboBox()
         self.sceneScaleCombo.addItems(['50%', '75%', '100%', '125%', '150%'])
         self.sceneScaleCombo.setCurrentIndex(2)
@@ -474,6 +489,7 @@ class MainWindow(QMainWindow):
             self.scene.removeItem(item)
 
     def sceneScaleChanged(self, scale):
+        """改变场景大小比列"""
         newScale = scale.left(scale.indexOf("%")).toDouble()[0] / 100.0
         oldMatrix = self.view.matrix()
         self.view.resetMatrix()
@@ -491,13 +507,13 @@ def main():
     # 2.1 创建顶层控件对象
     mainWindow = MainWindow()
     # 2.2 设置控件
-    mainWindow.setGeometry(100, 100, 1200, 800)
     # 获取屏幕尺寸QRect(0， 0， 1440， 900）
     screenRect = app.desktop().screenGeometry()
     # 中心坐标点QPoint(719, 499) (599, 399)
     mainWindow.move(screenRect.center() - mainWindow.rect().center())
     # 2.3 展示控件
     mainWindow.show()
+    mainWindow.setGeometry(100, 100, 1200, 800)
     # 3. 应用程序的执行, 进入到消息循环
     sys.exit(app.exec_())
 

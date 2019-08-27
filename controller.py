@@ -49,7 +49,7 @@ class ControllerManager(object):
             return False
 
     def optionalItemNames(self):
-        '获得可用的item的名称列表'
+        """获得可用的item的名称列表"""
         names = []
         for item in self.itemData:
             names.append(item['name'])
@@ -57,7 +57,7 @@ class ControllerManager(object):
         return names
 
     def loadItemData(self):
-        '加载模板数据'
+        """加载右键菜单模板数据"""
         return data.load_nodes_meta_information()
 
     def checkItemData(self):

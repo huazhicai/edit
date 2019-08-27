@@ -12,7 +12,7 @@ from font import FontManager, measureWidth
 
 
 class LineBase(QGraphicsLineItem):
-    def __init__(self, line, parent=None, scene=None):
+    def __init__(self, line, parent=None):
         super(LineBase, self).__init__(line, parent)
         self.myColor = Qt.black
         self.setPen(QPen(self.myColor, 1, Qt.SolidLine,
@@ -20,7 +20,7 @@ class LineBase(QGraphicsLineItem):
 
 
 class ArrowLine(LineBase):
-    def __init__(self, line, parent=None, scene=None):
+    def __init__(self, line, parent=None):
         super(ArrowLine, self).__init__(line, parent)
 
     def paint(self, painter, option, widget=None):
@@ -31,8 +31,8 @@ class ArrowLine(LineBase):
 
 
 class CosineLine(LineBase):
-    def __init__(self, line, parent=None, scene=None):
-        super(CosineLine, self).__init__(line, parent, scene)
+    def __init__(self, line, parent=None):
+        super(CosineLine, self).__init__(line, parent)
 
     def paint(self, painter, option, widget=None):
         painter.setRenderHint(QPainter.Antialiasing, True)
@@ -1591,15 +1591,15 @@ class EditButton(QGraphicsWidget):
     def shape(self):
         path = QPainterPath()
         path.addRect(self.boundingRect())
-
         return path
 
-    def paint(self, painter, option, widget):
+    def paint(self, painter, option, widget=None):
         painter.setRenderHint(QPainter.Antialiasing, True)
         painter.drawPixmap(-self._pix.width() / 2, -self._pix.height() / 2,
                            self._pix)
 
     def mousePressEvent(self, event):
+        # 发射鼠标按压信号
         self.pressed.emit()
 
     def mouseReleaseEvent(self, event):

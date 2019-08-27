@@ -1,5 +1,6 @@
 # coding:utf-8
-from PyQt5.Qt import *
+from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtWidgets import *
 
 
 class AttrPanel(QWidget):

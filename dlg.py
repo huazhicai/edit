@@ -1,12 +1,10 @@
 # coding:utf-8
-# from PyQt5.Qt import *
-from PyQt5.QtGui import QStandardItemModel, QStandardItem, QIcon
-from PyQt5.QtWidgets import QDialog, QLabel, QLineEdit, QPushButton, QTableWidget, QAbstractItemView, QGridLayout, \
-    QCheckBox, QTableWidgetItem, QTextEdit, QMessageBox, QComboBox, QCompleter, QListWidgetItem, QListWidget, \
-    QRadioButton, QButtonGroup
-
 import util
 import logger
+from PyQt5.QtCore import QSortFilterProxyModel, Qt
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QIcon
+from PyQt5.QtWidgets import *
+
 
 DialogLogger = logger.getLogger('Dialog')
 
@@ -339,7 +337,6 @@ class FindDialog(QDialog):
         self.findResultsList.verticalHeader().setVisible(True)
         self.findResultsList.horizontalHeader().setVisible(True)
         self.findResultsList.resizeColumnsToContents()
-        #		self.findResultsList.setAlternatingRowColors(True)
 
         # Event
         self.findResultsList.itemClicked.connect(self.switchToCuritem)
