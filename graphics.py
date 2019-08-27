@@ -1,13 +1,11 @@
 # coding:utf-8、
 import math
 from PyQt5.Qt import Qt
+from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QSizeF, QRectF, QLineF, QPointF, pyqtSignal, QSize
 from PyQt5.QtGui import QPen, QPainter, QPainterPath, QPolygonF, QPixmap, QColor, QLinearGradient
-from PyQt5.QtWidgets import QGraphicsLineItem, QGraphicsItem, QMessageBox, QMenu, QGraphicsWidget, QGraphicsTextItem, \
-    QGraphicsRectItem, QStyle
 
-from util import interpolate_cosine_points, editable_types, ItemType, \
-    ItemContent, Vec3
+from util import interpolate_cosine_points, editable_types, ItemType, ItemContent, Vec3
 from colors import ColorManager
 from dlg import ChangeValueDialog, TemplateDialog
 from font import FontManager, measureWidth

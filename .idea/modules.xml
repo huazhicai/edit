@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/edit.iml" filepath="$PROJECT_DIR$/.idea/edit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/editor.iml" filepath="$PROJECT_DIR$/.idea/editor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../pyqt-node-editor/.idea/pyqt-node-editor.iml" filepath="$PROJECT_DIR$/../../pyqt-node-editor/.idea/pyqt-node-editor.iml" />
     </modules>
   </component>
 </project>

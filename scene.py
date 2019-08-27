@@ -1,6 +1,3 @@
-# coding:utf-8
-
-# from PyQt5.Qt import *
 from PyQt5.QtCore import QPoint
 from PyQt5.QtGui import QFont, QTransform
 from PyQt5.QtWidgets import QGraphicsScene, QUndoStack
@@ -247,7 +244,7 @@ class DiagramScene(QGraphicsScene):
         anyItemInputTypes = []
         for chItem in item.childItems():
             if isinstance(chItem, DiagramItemInput) and \
-                    chItem.itemContent.contentType == 'Any':
+                            chItem.itemContent.contentType == 'Any':
                 for arrow in chItem.arrows:
                     anyItemInputTypes.append(arrow.connectionType)
 
@@ -320,10 +317,10 @@ class DiagramScene(QGraphicsScene):
                 # endItem.itemContent.contentValue = None
 
                 command = CommandLink(
-                    controller,
-                    self,
-                    arrow,
-                    description='add a link')
+                        controller,
+                        self,
+                        arrow,
+                        description='add a link')
                 self.undoStack.push(command)
                 self.editSignal.emit()
 

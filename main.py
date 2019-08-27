@@ -100,48 +100,48 @@ class MainWindow(QMainWindow):
 
     def createActions(self):
         self.deleteAction = QAction(
-            QIcon('./images/delete.png'),
-            '&Delete item',
-            self,
-            shortcut='Del',
-            statusTip='Delete a item',
-            triggered=self.deleteItem)
+                QIcon('./images/delete.png'),
+                '&Delete item',
+                self,
+                shortcut='Del',
+                statusTip='Delete a item',
+                triggered=self.deleteItem)
 
         self.newGraphAction = QAction(
-            QIcon('./images/filenew.png'),
-            '&New graph',
-            self,
-            shortcut='Ctrl+N',
-            statusTip='create a new graph',
-            triggered=self.newGraph)
+                QIcon('./images/filenew.png'),
+                '&New graph',
+                self,
+                shortcut='Ctrl+N',
+                statusTip='create a new graph',
+                triggered=self.newGraph)
         self.openGraphAction = QAction(
-            QIcon('./images/fileopen.png'),
-            '&Open graph',
-            self,
-            shortcut='Ctrl+O',
-            statusTip='open a graph',
-            triggered=self.openGraph)
+                QIcon('./images/fileopen.png'),
+                '&Open graph',
+                self,
+                shortcut='Ctrl+O',
+                statusTip='open a graph',
+                triggered=self.openGraph)
         self.openTemplateAction = QAction(
-            QIcon('./images/template.png'),
-            '&Open Template',
-            self,
-            shortcut='',
-            statusTip='open meta template',
-            triggered=self.openTemplate)
+                QIcon('./images/template.png'),
+                '&Open Template',
+                self,
+                shortcut='',
+                statusTip='open meta template',
+                triggered=self.openTemplate)
         self.closeGraphAction = QAction(
-            QIcon('./images/fileclose.png'),
-            '&Close graph',
-            self,
-            shortcut='Ctrl+W',
-            statusTip='close a graph',
-            triggered=self.closeGraph)
+                QIcon('./images/fileclose.png'),
+                '&Close graph',
+                self,
+                shortcut='Ctrl+W',
+                statusTip='close a graph',
+                triggered=self.closeGraph)
         self.saveAction = QAction(
-            QIcon('./images/filesave.png'),
-            '&Save',
-            self,
-            shortcut='Ctrl+S',
-            statusTip='save',
-            triggered=self.save)
+                QIcon('./images/filesave.png'),
+                '&Save',
+                self,
+                shortcut='Ctrl+S',
+                statusTip='save',
+                triggered=self.save)
         # self.saveGraphAction = QAction(
         # 	QIcon('./images/filesave.png'),
         # 	'&Save graph',
@@ -150,192 +150,192 @@ class MainWindow(QMainWindow):
         # 	statusTip='save a graph',
         # 	triggered=self.saveGraph)
         self.exportGraphAction = QAction(
-            QIcon('./images/image.png'),
-            '&Export Image',
-            self,
-            shortcut='',
-            statusTip='export to image',
-            triggered=self.exportGraph)
+                QIcon('./images/image.png'),
+                '&Export Image',
+                self,
+                shortcut='',
+                statusTip='export to image',
+                triggered=self.exportGraph)
         self.convertFileAction = QAction(
-            QIcon('./images/convert.png'),
-            '&Convert File',
-            self,
-            shortcut='',
-            statusTip='convert a graph file',
-            triggered=self.convertFile)
+                QIcon('./images/convert.png'),
+                '&Convert File',
+                self,
+                shortcut='',
+                statusTip='convert a graph file',
+                triggered=self.convertFile)
         self.exitAction = QAction(
-            QIcon('./images/exit.png'),
-            '&Exit',
-            self,
-            shortcut='Ctrl+Q',
-            statusTip='exit',
-            triggered=self.exitMe)
+                QIcon('./images/exit.png'),
+                '&Exit',
+                self,
+                shortcut='Ctrl+Q',
+                statusTip='exit',
+                triggered=self.exitMe)
 
         self.copyAction = QAction(
-            QIcon('images/copy.png'),
-            '&Copy',
-            self,
-            shortcut='Ctrl+C',
-            statusTip='copy an item',
-            triggered=self.copyItem)
+                QIcon('images/copy.png'),
+                '&Copy',
+                self,
+                shortcut='Ctrl+C',
+                statusTip='copy an item',
+                triggered=self.copyItem)
         self.cutAction = QAction(
-            QIcon('images/cut.png'),
-            '&Cut',
-            self,
-            shortcut='Ctrl+X',
-            statusTip='cut an item',
-            triggered=self.cutItem)
+                QIcon('images/cut.png'),
+                '&Cut',
+                self,
+                shortcut='Ctrl+X',
+                statusTip='cut an item',
+                triggered=self.cutItem)
         self.pasteAction = QAction(
-            QIcon('images/paste.png'),
-            '&Paste',
-            self,
-            shortcut='Ctrl+V',
-            statusTip='paste an item',
-            triggered=self.pasteItem)
+                QIcon('images/paste.png'),
+                '&Paste',
+                self,
+                shortcut='Ctrl+V',
+                statusTip='paste an item',
+                triggered=self.pasteItem)
 
         self.resizeSceneAction = QAction(
-            QIcon('images/resize.png'),
-            '&Resize scene',
-            self,
-            shortcut='',
-            statusTip='resize the scene size',
-            triggered=self.resizeScene)
+                QIcon('images/resize.png'),
+                '&Resize scene',
+                self,
+                shortcut='',
+                statusTip='resize the scene size',
+                triggered=self.resizeScene)
         self.undoAction = QAction(
-            QIcon('images/undo.png'),
-            '&Undo',
-            self,
-            shortcut='Ctrl+Z',
-            statusTip='Undo previous operation',
-            triggered=self.undo)
+                QIcon('images/undo.png'),
+                '&Undo',
+                self,
+                shortcut='Ctrl+Z',
+                statusTip='Undo previous operation',
+                triggered=self.undo)
         self.redoAction = QAction(
-            QIcon('images/redo.png'),
-            '&Redo',
-            self,
-            shortcut='Ctrl+Shift+Z',
-            statusTip='Redo previous operation',
-            triggered=self.redo)
+                QIcon('images/redo.png'),
+                '&Redo',
+                self,
+                shortcut='Ctrl+Shift+Z',
+                statusTip='Redo previous operation',
+                triggered=self.redo)
         self.findAction = QAction(
-            QIcon('images/find.png'),
-            '&Find',
-            self,
-            shortcut='Ctrl+F',
-            statusTip='Find item',
-            triggered=self.find)
+                QIcon('images/find.png'),
+                '&Find',
+                self,
+                shortcut='Ctrl+F',
+                statusTip='Find item',
+                triggered=self.find_)
         self.replaceAction = QAction(
-            QIcon('images/replace.png'),
-            '&Replace',
-            self,
-            shortcut='Ctrl+H',
-            statusTip='Replace some values',
-            triggered=self.replace
+                QIcon('images/replace.png'),
+                '&Replace',
+                self,
+                shortcut='Ctrl+H',
+                statusTip='Replace some values',
+                triggered=self.replace
         )
         self.aboutAction = QAction(
-            QIcon(''),
-            '&About',
-            self,
-            shortcut='',
-            statusTip='about me',
-            triggered=self.aboutMe)
+                QIcon(''),
+                '&About',
+                self,
+                shortcut='',
+                statusTip='about me',
+                triggered=self.aboutMe)
         self.startGameClientAction = QAction(
-            QIcon(''),
-            '&Start Game Client',
-            self,
-            shortcut='',
-            statusTip='start game client',
-            triggered=self.startGameClient)
+                QIcon(''),
+                '&Start Game Client',
+                self,
+                shortcut='',
+                statusTip='start game client',
+                triggered=self.startGameClient)
         self.exportTableAction = QAction(
-            QIcon('images/export_table.png'),
-            '&Export Table',
-            self,
-            shortcut='',
-            statusTip='export table',
-            triggered=self.exportTable)
+                QIcon('images/export_table.png'),
+                '&Export Table',
+                self,
+                shortcut='',
+                statusTip='export table',
+                triggered=self.exportTable)
         self.runAction = QAction(
-            QIcon('images/start.png'),
-            '&Run in Game',
-            self,
-            shortcut='',
-            statusTip='run in game',
-            triggered=self.runInGameWithoutTable)
+                QIcon('images/start.png'),
+                '&Run in Game',
+                self,
+                shortcut='',
+                statusTip='run in game',
+                triggered=self.runInGameWithoutTable)
         self.runActionTable = QAction(
-            QIcon('images/start.png'),
-            '&Run in Game(路点导表)',
-            self,
-            shortcut='',
-            statusTip='run in game',
-            triggered=self.runInGameWithTable)
+                QIcon('images/start.png'),
+                '&Run in Game(路点导表)',
+                self,
+                shortcut='',
+                statusTip='run in game',
+                triggered=self.runInGameWithTable)
 
         self.widerAction = QAction(
-            QIcon(''),
-            '&Wider',
-            self,
-            shortcut='Ctrl+=',
-            statusTip='item wider',
-            triggered=self.itemWider)
+                QIcon(''),
+                '&Wider',
+                self,
+                shortcut='Ctrl+=',
+                statusTip='item wider',
+                triggered=self.itemWider)
         self.thinnerAction = QAction(
-            QIcon(''),
-            '&Thinner',
-            self,
-            shortcut='Ctrl+-',
-            statusTip='item thinner',
-            triggered=self.itemThinner)
+                QIcon(''),
+                '&Thinner',
+                self,
+                shortcut='Ctrl+-',
+                statusTip='item thinner',
+                triggered=self.itemThinner)
         self.foldAction = QAction(
-            QIcon('images/fold.png'),
-            '&Fold',
-            self,
-            shortcut='Ctrl+M',
-            statusTip='fold item',
-            triggered=self.itemFold)
+                QIcon('images/fold.png'),
+                '&Fold',
+                self,
+                shortcut='Ctrl+M',
+                statusTip='fold item',
+                triggered=self.itemFold)
         self.unfoldAction = QAction(
-            QIcon('images/unfold.png'),
-            '&Unfold',
-            self,
-            shortcut='Ctrl+Shift+M',
-            statusTip='unfold item',
-            triggered=self.itemUnfold)
+                QIcon('images/unfold.png'),
+                '&Unfold',
+                self,
+                shortcut='Ctrl+Shift+M',
+                statusTip='unfold item',
+                triggered=self.itemUnfold)
         self.commentAction = QAction(
-            QIcon(''),
-            '&Comment',
-            self,
-            shortcut='Ctrl+T',
-            statusTip='add comment',
-            triggered=self.commentItem)
+                QIcon(''),
+                '&Comment',
+                self,
+                shortcut='Ctrl+T',
+                statusTip='add comment',
+                triggered=self.commentItem)
         self.freeCommentAction = QAction(
-            QIcon(''),
-            '&Free Comment',
-            self,
-            shortcut='Ctrl+G',
-            statusTip='add free comment',
-            triggered=self.freeComment)
+                QIcon(''),
+                '&Free Comment',
+                self,
+                shortcut='Ctrl+G',
+                statusTip='add free comment',
+                triggered=self.freeComment)
 
         self.showQuickAction = QAction(
-            QIcon(''),
-            '&Show Quick Bar',
-            self,
-            shortcut='',
-            statusTip='show the quick bar',
-            triggered=self.showQuick)
+                QIcon(''),
+                '&Show Quick Bar',
+                self,
+                shortcut='',
+                statusTip='show the quick bar',
+                triggered=self.showQuick)
         self.hideQuickAction = QAction(
-            QIcon(''),
-            '&Hide Quick Bar',
-            self,
-            shortcut='',
-            statusTip='hide the quick bar',
-            triggered=self.hideQuick)
+                QIcon(''),
+                '&Hide Quick Bar',
+                self,
+                shortcut='',
+                statusTip='hide the quick bar',
+                triggered=self.hideQuick)
         self.enterFullScreenAction = QAction(
-            QIcon(''),
-            '&Enter Full Screen',
-            self,
-            shortcut='',
-            statusTip='enter full screen',
-            triggered=self.enterFull)
+                QIcon(''),
+                '&Enter Full Screen',
+                self,
+                shortcut='',
+                statusTip='enter full screen',
+                triggered=self.enterFull)
         self.exitFullScreenAction = QAction(
-            QIcon(''),
-            '&Exit Full Screen',
-            self,
-            shortcut='Esc',
-            statusTip='exit full screen',
-            triggered=self.exitFull)
+                QIcon(''),
+                '&Exit Full Screen',
+                self,
+                shortcut='Esc',
+                statusTip='exit full screen',
+                triggered=self.exitFull)
 
     def newGraph(self):
         self.addTab()
@@ -720,7 +720,7 @@ class MainWindow(QMainWindow):
 
         graphWidget.redo()
 
-    def find(self):
+    def find_(self):
         graphWidget = self.tabWidget.currentWidget()
         if not isinstance(graphWidget, GraphWidget):
             return
@@ -785,6 +785,7 @@ class MainWindow(QMainWindow):
     def createMenus(self):
         self.fileMenu = self.menuBar().addMenu('&File')
         self.fileMenu.addAction(self.newGraphAction)
+        self.fileMenu.addSeparator()
         self.fileMenu.addAction(self.openGraphAction)
         self.fileMenu.addAction(self.openTemplateAction)
         # self.fileMenu.addAction(self.saveGraphAction)
@@ -792,18 +793,23 @@ class MainWindow(QMainWindow):
         self.fileMenu.addAction(self.closeGraphAction)
         self.fileMenu.addAction(self.exportGraphAction)
         self.fileMenu.addAction(self.convertFileAction)
+        self.fileMenu.addSeparator()
         self.fileMenu.addAction(self.exitAction)
 
         self.editMenu = self.menuBar().addMenu('&Edit')
         self.editMenu.addAction(self.deleteAction)
+        self.editMenu.addSeparator()
+        self.editMenu.addAction(self.undoAction)
+        self.editMenu.addAction(self.redoAction)
+        self.editMenu.addSeparator()
         self.editMenu.addAction(self.copyAction)
         self.editMenu.addAction(self.cutAction)
         self.editMenu.addAction(self.pasteAction)
-        self.editMenu.addAction(self.undoAction)
-        self.editMenu.addAction(self.redoAction)
-        self.editMenu.addAction(self.resizeSceneAction)
+        self.fileMenu.addSeparator()
         self.editMenu.addAction(self.findAction)
         self.editMenu.addAction(self.replaceAction)
+        self.editMenu.addSeparator()
+        self.editMenu.addAction(self.resizeSceneAction)
 
         # self.gameMenu = self.menuBar().addMenu('&Game')
         # self.gameMenu.addAction(self.startGameClientAction)
@@ -819,7 +825,7 @@ class MainWindow(QMainWindow):
         self.itemMenu.addAction(self.commentAction)
         self.itemMenu.addAction(self.freeCommentAction)
 
-        self.viewMenu = self.menuBar().addMenu('&Views')
+        self.viewMenu = self.menuBar().addMenu('&View')
         self.viewMenu.addAction(self.showQuickAction)
         self.viewMenu.addAction(self.hideQuickAction)
         self.viewMenu.addAction(self.enterFullScreenAction)
@@ -828,48 +834,48 @@ class MainWindow(QMainWindow):
         self.aboutMenu = self.menuBar().addMenu('&Help')
         self.aboutMenu.addAction(self.aboutAction)
 
-    # def createToolBar(self):
-    #     self.editToolBar = self.addToolBar("Edit")
-    #     self.editToolBar.addAction(self.deleteAction)
-    #
-    #     addButton = QToolButton()
-    #     addButton.setCheckable(True)
-    #     addButton.setIcon(QIcon('./images/add.png'))
-    #
-    #     self.pointerButton = QToolButton()
-    #     self.pointerButton.setCheckable(True)
-    #     self.pointerButton.setChecked(True)
-    #     self.pointerButton.setIcon(QIcon('./images/pointer.png'))
-    #     linePointerButton = QToolButton()
-    #     linePointerButton.setCheckable(True)
-    #     linePointerButton.setIcon(QIcon('./images/linepointer.png'))
-    #
-    #     self.pointerTypeGroup = QButtonGroup()
-    #     self.pointerTypeGroup.addButton(addButton, DiagramScene.InsertItem)
-    #     self.pointerTypeGroup.addButton(self.pointerButton, DiagramScene.MoveItem)
-    #     self.pointerTypeGroup.addButton(linePointerButton, DiagramScene.InsertLine)
-    #     # self.pointerTypeGroup.buttonClicked[int].connect(self.pointerGroupClicked)
-    #
-    #     self.sceneScaleCombo = QComboBox()
-    #     self.sceneScaleCombo.addItems(['50%','75%','100%','125%','150%'])
-    #     self.sceneScaleCombo.setCurrentIndex(2)
-    #     self.sceneScaleCombo.currentIndexChanged[str].connect(self.sceneScaleChanged)
-    #
-    #     self.itemTypeCombo = QComboBox()
-    #     self.itemTypeCombo.addItems(ControllerManager().optionalItemNames())
-    #     self.itemTypeCombo.setCurrentIndex(0)
-    #     self.itemTypeCombo.currentIndexChanged[str].connect(self.itemTypeChanged)
-    #
-    #     self.pointerToolbar = self.addToolBar('Pointer type')
-    #     self.pointerToolbar.addWidget(self.pointerButton)
-    #     self.pointerToolbar.addWidget(linePointerButton)
-    #     self.pointerToolbar.addWidget(self.sceneScaleCombo)
-    #     self.pointerToolbar.addWidget(addButton)
-    #     self.pointerToolbar.addWidget(self.itemTypeCombo)
-    #
-    #     self.gameToolbar = self.addToolBar('Game')
-    #     self.gameToolbar.addAction(self.exportTableAction)
-    #     self.gameToolbar.addAction(self.runAction)
+        # def createToolBar(self):
+        #     self.editToolBar = self.addToolBar("Edit")
+        #     self.editToolBar.addAction(self.deleteAction)
+        #
+        #     addButton = QToolButton()
+        #     addButton.setCheckable(True)
+        #     addButton.setIcon(QIcon('./images/add.png'))
+        #
+        #     self.pointerButton = QToolButton()
+        #     self.pointerButton.setCheckable(True)
+        #     self.pointerButton.setChecked(True)
+        #     self.pointerButton.setIcon(QIcon('./images/pointer.png'))
+        #     linePointerButton = QToolButton()
+        #     linePointerButton.setCheckable(True)
+        #     linePointerButton.setIcon(QIcon('./images/linepointer.png'))
+        #
+        #     self.pointerTypeGroup = QButtonGroup()
+        #     self.pointerTypeGroup.addButton(addButton, DiagramScene.InsertItem)
+        #     self.pointerTypeGroup.addButton(self.pointerButton, DiagramScene.MoveItem)
+        #     self.pointerTypeGroup.addButton(linePointerButton, DiagramScene.InsertLine)
+        #     # self.pointerTypeGroup.buttonClicked[int].connect(self.pointerGroupClicked)
+        #
+        #     self.sceneScaleCombo = QComboBox()
+        #     self.sceneScaleCombo.addItems(['50%','75%','100%','125%','150%'])
+        #     self.sceneScaleCombo.setCurrentIndex(2)
+        #     self.sceneScaleCombo.currentIndexChanged[str].connect(self.sceneScaleChanged)
+        #
+        #     self.itemTypeCombo = QComboBox()
+        #     self.itemTypeCombo.addItems(ControllerManager().optionalItemNames())
+        #     self.itemTypeCombo.setCurrentIndex(0)
+        #     self.itemTypeCombo.currentIndexChanged[str].connect(self.itemTypeChanged)
+        #
+        #     self.pointerToolbar = self.addToolBar('Pointer type')
+        #     self.pointerToolbar.addWidget(self.pointerButton)
+        #     self.pointerToolbar.addWidget(linePointerButton)
+        #     self.pointerToolbar.addWidget(self.sceneScaleCombo)
+        #     self.pointerToolbar.addWidget(addButton)
+        #     self.pointerToolbar.addWidget(self.itemTypeCombo)
+        #
+        #     self.gameToolbar = self.addToolBar('Game')
+        #     self.gameToolbar.addAction(self.exportTableAction)
+        #     self.gameToolbar.addAction(self.runAction)
         pass
 
     def deleteItem(self):

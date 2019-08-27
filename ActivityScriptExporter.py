@@ -116,7 +116,7 @@ def validate_type(value, argType):
         return type(value) == str
     elif argType == 'Vec3':
         return type(value) == tuple and len(value) == 3 and type(value[0]) == float and type(
-            value[1]) == float and type(value[2]) == float
+                value[1]) == float and type(value[2]) == float
 
     return True
 
@@ -298,8 +298,8 @@ def generate_node_graph(defData, editorData):
                             value.value = string_to_vec3(editorNode['args'][argUUID])
                         except:
                             raise TypeMismatchError(
-                                'validate_type Vec3 error, argName "%s", type of (%s) is not %s, def is %s' % (
-                                    argName, value.value, argType, node.nodeDef), node.nodeID, argUUID)
+                                    'validate_type Vec3 error, argName "%s", type of (%s) is not %s, def is %s' % (
+                                        argName, value.value, argType, node.nodeDef), node.nodeID, argUUID)
                     else:
                         if editorNode['args'][argUUID] is None:
                             value = defaultNoneValue
@@ -310,8 +310,9 @@ def generate_node_graph(defData, editorData):
                         assert validate_type(value.value, argType)
                     except:
                         raise TypeMismatchError(
-                            'validate_type error, argName "%s", type of (%s) is not %s, %s, def is %s' % (
-                                argName, value.value, argType, type(value.value), node.nodeDef), node.nodeID, argUUID)
+                                'validate_type error, argName "%s", type of (%s) is not %s, %s, def is %s' % (
+                                    argName, value.value, argType, type(value.value), node.nodeDef), node.nodeID,
+                                argUUID)
 
                     node.args[argUUID]['valueRef'] = value
                     node.args[argUUID]['dataProvider'] = node
@@ -385,16 +386,17 @@ def generate_node_graph(defData, editorData):
                     assert validate_type(argValue, argType)
                 except:
                     raise TypeMismatchError(
-                        'validate_type error, argName "%s", type of (%s) is not %s, %s, def is %s' % (
-                            argDef['name'][0], argValue, argType, type(argValue), node.nodeDef), node.nodeID, argUUID)
+                            'validate_type error, argName "%s", type of (%s) is not %s, %s, def is %s' % (
+                                argDef['name'][0], argValue, argType, type(argValue), node.nodeDef), node.nodeID,
+                            argUUID)
 
             if argDef.get('ensureStaticConst') and argValueRef is not defaultNoneValue:
                 try:
                     assert arg['dataProvider'] is node
                 except:
                     raise TypeMismatchError(
-                        'validate_type error, value must be static const, argName "%s", type of (%s) is not %s, def is %s' % (
-                            argDef['name'][0], argValue, argType, node.nodeDef), node.nodeID, argUUID)
+                            'validate_type error, value must be static const, argName "%s", type of (%s) is not %s, def is %s' % (
+                                argDef['name'][0], argValue, argType, node.nodeDef), node.nodeID, argUUID)
 
     return nodes
 
@@ -730,8 +732,8 @@ def do_work(defData, editorData, byEditor, filename, is_city=None):
                 'outputs': returns,
             }
 
-        # if returns_linked:
-        #     nodes[node.idx]['returns_linked'] = True
+            # if returns_linked:
+            #     nodes[node.idx]['returns_linked'] = True
 
     """
         针对外部事件的特殊处理
@@ -1070,7 +1072,7 @@ def do_work(defData, editorData, byEditor, filename, is_city=None):
             setColorThemeNodeCount += 1
 
             on_script_start.append((node.idx, node.nodeDef['function']))
-        # nodes[node.idx]['args'].append( ('_ColorMultipliers', append_runtime_data([ (1.0, 0.0, 0.0), (0.0, 1.0, 0.0) ])) )
+            # nodes[node.idx]['args'].append( ('_ColorMultipliers', append_runtime_data([ (1.0, 0.0, 0.0), (0.0, 1.0, 0.0) ])) )
 
     for idx in mechanism_with_blcok:
         if idx not in has_opt_mechanism:

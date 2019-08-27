@@ -1,6 +1,3 @@
-# coding:utf-8
-
-# from PyQt5.Qt import *
 from PyQt5.Qt import Qt
 from PyQt5.QtCore import pyqtSignal, QPointF, QPoint
 from PyQt5.QtWidgets import QGraphicsView
@@ -23,10 +20,10 @@ class DiagramView(QGraphicsView):
         self.gCenter = None
         self.moveFlag = False
 
-    # 关闭垂直和水平方向的滚动条
-    # self.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-    # self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-    # Qt::ScrollBarAlwaysOff
+        # 关闭垂直和水平方向的滚动条
+        # self.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        # self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        # Qt::ScrollBarAlwaysOff
 
     def mousePressEvent(self, event):
         if event.button() == Qt.MiddleButton:
@@ -73,7 +70,7 @@ class DiagramView(QGraphicsView):
             oldPos = self.mapToScene(event.pos())
 
             # Zoom
-            if event.delta() > 0:
+            if event.angleDelta().y() > 0:
                 zoomFactor = zoomInFactor
             else:
                 zoomFactor = zoomOutFactor
@@ -93,8 +90,8 @@ class DiagramView(QGraphicsView):
             self.translate(delta.x(), delta.y())
             return
 
-    # 注释此行来开关对滚动条的支持
-    # super(DiagramView,self).wheelEvent(event)
+        # 注释此行来开关对滚动条的支持
+        super(DiagramView, self).wheelEvent(event)
 
     def dragEnterEvent(self, event):
         pass
