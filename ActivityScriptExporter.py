@@ -366,7 +366,6 @@ def generate_node_graph(defData, editorData):
 
             if argType == 'Event':
                 continue
-
             argValueRef = arg['valueRef']
             argValue = arg['valueRef'].value
 
@@ -1276,8 +1275,8 @@ if __name__ == '__main__':
     elif len(sys.argv) == 5:
         multi_file_export_mode()
     else:
-        nodeDefFilepath = '/Users/mac/PycharmProjects/crawler/edit/meta/nodes.json'
-        editorFilepath = '/Users/mac/PycharmProjects/crawler/edit/graph/temp.json'
+        nodeDefFilepath = 'E:\\PycharmProjects\\crawler\\editor\meta\\nodes.json'
+        editorFilepath = 'E:\\PycharmProjects\\crawler\\editor\\graph\\temp.json'
         # resPath = 'F:/H43/trunk/Client_Resources/res'
         defData = json.loads(open(nodeDefFilepath, 'r').read())
         editorData = json.loads(open(editorFilepath, 'r').read())

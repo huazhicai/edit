@@ -31,6 +31,6 @@
 # 把不符合整数格式的节点数值都转换为123
 # 把不符合字符串格式的节点都转换为“abc“
 convertRule = {
-	'Int': lambda x: 123,
-	'String': lambda x: 'abc'
+    'Int': lambda x: 123,
+    'String': lambda x: 'abc'
 }

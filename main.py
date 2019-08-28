@@ -979,13 +979,15 @@ class MainWindow(QMainWindow):
             if filename.strip() == '':
                 return
 
-            from backcompat import convertFile
+            from A_Exporter import convertFile
+            # from backcompat import convertFile
 
             if convertFile(filename):
                 QMessageBox.information(None,
                                         'Info',
                                         '转换文件成功!',
                                         QMessageBox.Ok)
+
             else:
                 QMessageBox.information(None,
                                         'Warning',
